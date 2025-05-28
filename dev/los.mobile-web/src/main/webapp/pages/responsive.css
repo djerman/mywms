@@ -1,0 +1,112 @@
+/*body, input, button {
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
+    box-sizing: border-box;
+}
+
+input, button {
+    width: 100%;
+    padding: 0.8em;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+}*/
+
+/*input[type="submit"]  {
+    display: block;
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #ffc107;
+    cursor: pointer;
+}*/
+
+/*.navigateButton {
+	padding: 1em;
+    font-size: 1.2em;
+}*/
+@media screen and (min-width: 360px) {
+	.pageheader {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 1.4em;
+		margin-bottom: 1em;
+		flex-wrap: wrap;
+	}
+	
+	.logo {
+		display: block;
+		max-width: 80px;
+		height: auto;
+		object-fit: contain;
+		margin-left: auto;
+		flex-shrink: 0;
+	}
+	
+	body {
+		font-size: 1.2em;
+	}
+	
+	.navigateButton {
+		font-size: 1.5em;
+		padding: 0.5em;
+		width: 72px;
+	}
+	input {
+		font-size: 1.5em;
+		padding: 0.5em;
+		box-sizing: border-box;
+	}
+	
+	/* Специјално за BUTTON_LOGOUT – фиксна ширина */
+	.commandButton[id*="BUTTON_LOGOUT"]{
+		width: 144px;
+		display: inline-block;
+		white-space: nowrap;
+	}
+
+	.commandButton {
+		font-size: 1.5em;
+		padding: 0.5em;
+		box-sizing: border-box;
+	}
+	
+	/* Сви остали .commandButton дугмићи (сем logout) – 100% ширина, више редова ако треба */
+	.commandButton:not([id*="BUTTON_LOGOUT"]) {
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		white-space: normal;
+		word-break: break-word;
+		text-align: center;
+	}
+
+	/* Фиксна ширина само за одређена дугмад */
+	.commandButton[id*="forwardButton"], 
+	.commandButton[id*="backButton"] {
+		width: 144px !important;
+		display: inline-block;
+		white-space: nowrap;
+	}
+	
+	.buttonbar {
+		padding: 10px !important;
+	}
+	
+	/*Ово важи за сваки <select> елемент чији id се завршава на orderComboBox, без обзира на то што му претходи*/
+	select[id$="orderComboBox"] {
+		font-size: 1.5em;
+		padding: 0.5em;
+		box-sizing: border-box;
+	}
+	
+	/*ово је за приказ текста параметар:  вредност */
+	.param, .label {
+		font-size: 1.2em;
+		padding: 0.2em;
+		box-sizing: border-box;
+	}
+}

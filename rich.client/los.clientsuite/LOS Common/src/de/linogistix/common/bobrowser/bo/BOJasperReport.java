@@ -26,6 +26,14 @@ import org.openide.nodes.Node;
 import org.openide.nodes.Node.Property;
 import org.openide.util.Lookup;
 
+import javax.swing.Action;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openide.util.actions.SystemAction;
+import de.linogistix.common.bobrowser.action.BOJasperReportCompileAction;
+import de.linogistix.common.bobrowser.action.BOJasperReportRunAction;
+
 /**
  * @author krane
  *
@@ -119,8 +127,19 @@ public class BOJasperReport extends BO {
         return super.getValueList(fieldName);
     }
 
-        @Override
+    @Override
     public String getBundlePrefix() {
         return "JasperReports";
     }
+   
+    public BOJasperReport() {
+            super();
+
+    List<SystemAction> actions = new ArrayList<>();
+    actions.add(SystemAction.get(BOJasperReportCompileAction.class));
+    actions.add(SystemAction.get(BOJasperReportRunAction.class));
+
+    setMasterActions(actions); // постојећи метод из BO класе
+    }
+
 }

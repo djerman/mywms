@@ -1,0 +1,50 @@
+.custom-select-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  font-size: 1.5em;
+  margin-bottom: 0.2em;
+}
+
+.custom-select {
+  position: relative; /* мора за стрелицу */
+  background-color: white;
+  border: 1px solid #aaa;
+  padding: 0.5em;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.custom-options {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #aaa;
+  border-top: none;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+.custom-option {
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+.custom-option:hover {
+  background-color: #eee;
+}
+
+.custom-select::after {
+  content: "▼";
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  pointer-events: none;
+  color: #555;
+}
+

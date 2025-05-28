@@ -19,11 +19,14 @@
    		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>LOS</title>
         <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/stylesheet.css" type="text/css" />
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/responsive.css" type="text/css" />
     </head>
     <f:view locale="#{PickingBean.locale}" >
         <f:loadBundle var="bundle" basename ="de.linogistix.mobile.processes.picking.PickingMobileBundle" /> 
         
-        <body onLoad="document.getElementById('form:start').click();">
+        <!-- remove load immediately on page load from body
+             onLoad="document.getElementById('form:start').click();" -->
+        <body >
 			<h:form id="form"> 
                	<h:commandButton id="start" 
 	                			value="#{bundle.ButtonStart}" 

@@ -10,7 +10,7 @@ package de.linogistix.common.util;
 //import com.sun.image.codec.jpeg.JPEGCodec;
 //import com.sun.image.codec.jpeg.JPEGEncodeParam;
 //import com.sun.image.codec.jpeg.JPEGImageEncoder;
-import com.sun.imageio.plugins.jpeg.JPEGImageWriter;
+//import com.sun.imageio.plugins.jpeg.JPEGImageWriter;
 import de.linogistix.common.gui.object.IconType;
 import java.awt.AWTException;
 import java.awt.AlphaComposite;
@@ -37,6 +37,10 @@ import javax.swing.ImageIcon;
 //import static org.hibernate.cache.Timestamper.next;
 import org.openide.util.Exceptions;
 import org.openide.util.ImageUtilities;
+//zamena za image writer
+import javax.imageio.ImageWriter;
+import javax.imageio.ImageIO;
+import java.util.Iterator;
 
 
 /**
@@ -210,7 +214,11 @@ public class GraphicUtil extends Component {
 
             //dgrys new code
             //TODO dgrys test it
-            JPEGImageWriter imageWriter = (JPEGImageWriter) ImageIO.getImageWritersBySuffix("jpeg").next();
+            //JPEGImageWriter imageWriter = (JPEGImageWriter) ImageIO.getImageWritersBySuffix("jpeg").next();
+            Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpeg");
+            if (writers.hasNext()) {
+            ImageWriter imageWriter = writers.next();
+            // користи writer као обичан ImageWriter
             ImageOutputStream ios = ImageIO.createImageOutputStream(fos);
             imageWriter.setOutput(ios);
             
@@ -219,6 +227,9 @@ public class GraphicUtil extends Component {
             imageWriter.write(imageMetaData, new IIOImage(image, null, null), null);
             ios.close();
             imageWriter.dispose();
+            }
+            
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }

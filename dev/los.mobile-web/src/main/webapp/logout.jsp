@@ -28,6 +28,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         <title>LOS</title>
     <jsp:useBean id="JSPLogoutBeanID" scope="request" class="de.linogistix.mobile.common.gui.jsp.JSPLogoutBean" />
         <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/stylesheet.css" type="text/css" />
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/responsive.css" type="text/css" />
     </head>
 
     <f:loadBundle var="bundle" basename ="de.linogistix.mobile.res.Bundle" />

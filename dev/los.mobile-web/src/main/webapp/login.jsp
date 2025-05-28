@@ -32,6 +32,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         <title>LOS</title>
         <jsp:useBean id="JSPLoginBeanID" scope="request" class="de.linogistix.mobile.common.gui.jsp.JSPLoginBean" />
         <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/stylesheet.css" type="text/css" />
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/responsive.css" type="text/css" />
     </head>
     
     <f:loadBundle basename ="de.linogistix.mobile.res.Bundle" var="bundle" />
@@ -62,7 +63,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                             <h:outputLabel  id="loginLabel" value="#{bundle.User}" styleClass="label" /> </td>
                         </tr>
                         <tr>
-                            <td style="margin-left:5px"><input id="j_username2" name="j_username2" style="background-color: #ffffff;width:100%;" onblur="enableSend()"/></td>
+                            <td style="margin-left:5px"><input id="j_username2" name="j_username2" style="background-color: #ffffff; width:100%;" onblur="enableSend()"/></td>
                         </tr>
                         <tr>
                             <td width="50%" style="margin-left:5px"><h:outputLabel id="passwordLabel" value="#{bundle.Password}" styleClass="label" /></td>
@@ -73,7 +74,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                                 
                                 <%--   <f:validateLength minimum="8" maximum="500"/> --%>                                       
                                 
-                                <input id="j_password2" name="j_password2" type="password" style="background-color: #ffffff;width:100%;"/>
+                                <input id="j_password2" name="j_password2" type="password" style="background-color: #ffffff; width:100%;"/>
                             </td>	
                         </tr>
                     </table>

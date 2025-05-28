@@ -27,6 +27,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         <%--    <link rel="stylesheet" type="text/css" href="pages/picking/stylesheet.css" />--%>
         <%--  <link rel="stylesheet" type="text/css" href="stylesheet.css" /> --%>
         <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/stylesheet.css" type="text/css" />
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/responsive.css" type="text/css" />
     </head>
     
     <f:loadBundle var="bundle" basename ="de.linogistix.mobile.res.Bundle" />

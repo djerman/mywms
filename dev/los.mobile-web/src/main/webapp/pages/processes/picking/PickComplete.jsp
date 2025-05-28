@@ -21,6 +21,7 @@
    		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>LOS</title>
         <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/stylesheet.css" type="text/css" />
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/responsive.css" type="text/css" />
     </head>
     
     <body class="verticalscroll" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" onload="load()">

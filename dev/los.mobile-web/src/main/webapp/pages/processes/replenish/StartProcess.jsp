@@ -19,6 +19,7 @@
    		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>LOS</title>
         <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/stylesheet.css" type="text/css" />
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/responsive.css" type="text/css" />
     </head>
     <f:view locale="#{ReplenishBean.locale}" >
         <f:loadBundle var="bundle" basename ="de.linogistix.mobile.processes.replenish.ReplenishBundle" /> 

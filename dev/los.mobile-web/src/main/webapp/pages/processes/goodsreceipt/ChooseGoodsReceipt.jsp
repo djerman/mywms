@@ -15,6 +15,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 --%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core" %>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,6 +26,10 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
    		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>LOS</title>
         <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/stylesheet.css" type="text/css" />
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/pages/responsive.css" type="text/css" />
+        <!-- У <head> секцији -->
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/custom-select.css" />
+        <script src="${pageContext.request.contextPath}/pages/custom-select.js"></script>
     </head>
     
     <body class="verticalscroll" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" onload="load()">
@@ -52,13 +57,23 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         
                         <tr>
                             <td>
-                                <h:selectOneMenu id="orderComboBox"
+                                <!-- <h:selectOneMenu id="orderComboBox"
                                                  value="#{GoodsReceiptBean.selectedGoodsReceipt}" style="width:100%;" >
                                     <f:selectItems
                                         value="#{GoodsReceiptBean.goodsReceiptList}" />
-                                </h:selectOneMenu>
-                                
-                            </td>
+                                </h:selectOneMenu> -->
+							<div class="custom-select-wrapper">
+								<div class="custom-select"><h:outputText value="#{''}" /></div>
+								<div class="custom-options">
+									<c:forEach var="item" items="${GoodsReceiptBean.goodsReceiptList}">
+										<div class="custom-option" data-value="${item.value}">${item.label}</div>
+									</c:forEach>
+								</div>
+								<h:inputHidden id="hiddenSelect" value="#{GoodsReceiptBean.selectedGoodsReceipt}" />
+							</div>
+
+
+						</td>
                             
                         </tr>
                     </table>
@@ -84,9 +99,15 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                 setFocus();    
             }    
             
-            function setFocus() {
-                document.getElementById('Form:orderComboBox').focus();
-            }    
+            //function setFocus() {
+              //  document.getElementById('Form:orderComboBox').focus();
+            //} 
+            function setFocus(){
+            var el = document.getElementById('Form:orderComboBox');
+            if(el){
+               el.focus();
+              }
+            }
             
         </script>
     </body>
