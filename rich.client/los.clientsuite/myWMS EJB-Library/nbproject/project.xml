@@ -39,10 +39,8 @@
                 <package>de.linogistix.los.inventory.facade</package>
                 <package>de.linogistix.los.inventory.model</package>
                 <package>de.linogistix.los.inventory.pick.facade</package>
-                <package>de.linogistix.los.inventory.pick.model</package>
                 <package>de.linogistix.los.inventory.query</package>
                 <package>de.linogistix.los.inventory.query.dto</package>
-                <package>de.linogistix.los.inventory.report</package>
                 <package>de.linogistix.los.inventory.res</package>
                 <package>de.linogistix.los.inventory.service</package>
                 <package>de.linogistix.los.inventory.service.dto</package>
@@ -113,6 +111,10 @@
                 <package>org.mywms.util</package>
             </public-packages>
             <class-path-extension>
+                <runtime-relative-path>ext/los-ejb.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/los-ejb.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
                 <runtime-relative-path>ext/mywms.as-ejb.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/mywms.as-ejb.jar</binary-origin>
             </class-path-extension>
@@ -121,8 +123,8 @@
                 <binary-origin>release/modules/ext/wms2-ejb.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
-                <runtime-relative-path>ext/los-ejb.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/los-ejb.jar</binary-origin>
+                <runtime-relative-path>ext/hibernate-core-5.3.20.Final.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/hibernate-core-5.3.20.Final.jar</binary-origin>
             </class-path-extension>
         </data>
     </configuration>

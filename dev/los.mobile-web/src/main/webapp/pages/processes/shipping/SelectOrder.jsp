@@ -56,27 +56,25 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         
                         <tr>
                             <td>
-                                <!-- <h:selectOneMenu id="orderComboBox" 
+                                <h:selectOneMenu id="orderComboBox" 
                                 	onchange="submit();" 
                                 	valueChangeListener="#{ShippingBean.selectedOrderChanged}"
                                     value="#{ShippingBean.orderNumber}" 
                                     style="width:100%;" >
                                     <f:selectItems value="#{ShippingBean.orderList}" />
-                                </h:selectOneMenu> -->
+                                </h:selectOneMenu> 
 
-							<div class="custom-select-wrapper" data-submit="true">
+							<!-- <div class="custom-select-wrapper"> 
 								<div class="custom-select">
 									<h:outputText value="#{ShippingBean.orderNumber}" />
 								</div>
 								<div class="custom-options">
 									<c:forEach var="item" items="${ShippingBean.orderList}">
-										<div class="custom-option" data-value="${item.value}">
-											${item.label}</div>
+										<div class="custom-option" data-value="${item.value}">${item.label}</div>
 									</c:forEach>
 								</div>
-								<h:inputHidden id="hiddenSelect"
-									value="#{ShippingBean.orderNumber}" />
-							</div>
+								<h:inputHidden id="hiddenSelect" value="#{ShippingBean.orderNumber}" />
+							</div> -->
 
 						</td>
                             

@@ -11,6 +11,9 @@ The server component is running in a JEE application server like wildfly. Client
 
 This project is maintained by [krane.engineer](https://krane.engineer).
 
+This fork of original mywms is maintained by [djerman](https://github.com/djerman) and is added localized version for serbian market. 
+This also includes changes on jsp pages so it can be used with smart phones or PDA with greater screen resolution.
+
 
 ## Features
 
