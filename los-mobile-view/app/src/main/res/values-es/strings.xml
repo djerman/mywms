@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">los-mobile-view</string>
+    <string name="save_button">Guardar</string>
+    <string name="url_hint">Ingrese la URL (ej. http://192.168.0.10:8080/los-mobile)</string>
+    <string name="open_settings">Configuración</string>
+    <string name="scan_barcode">Escanear</string>
+    <string name="scanner_package_hint">Ingrese el paquete de la aplicación de escáner (opcional)</string>
+
+    <!-- Nuevas cadenas para la configuración del servidor -->
+    <string name="select_protocol">Seleccione el protocolo:</string>
+    <string name="http">http</string>
+    <string name="https">https</string>
+    <string name="ip_or_domain_hint">Dirección IP o dominio (ej. 192.168.1.1 o mywms.com)</string>
+    <string name="port_hint">Puerto (ej. 8080)</string>
+    <string name="save_and_test">Guardar y probar</string>
+    <string name="invalid_port">Número de puerto no válido (1–65535)</string>
+
+</resources>

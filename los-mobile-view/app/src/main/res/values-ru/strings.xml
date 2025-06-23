@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">los-mobile-view</string>
+    <string name="save_button">Сохранить</string>
+    <string name="url_hint">Введите URL (например: http://192.168.0.10:8080/los-mobile)</string>
+    <string name="open_settings">Настройки</string>
+    <string name="scan_barcode">Сканировать</string>
+    <string name="scanner_package_hint">Введите пакет сканера (необязательно)</string>
+
+    <!-- Новые строки для конфигурации сервера -->
+    <string name="select_protocol">Выберите протокол:</string>
+    <string name="http">http</string>
+    <string name="https">https</string>
+    <string name="ip_or_domain_hint">IP-адрес или домен (например: 192.168.1.1 или mywms.com)</string>
+    <string name="port_hint">Порт (например: 8080)</string>
+    <string name="save_and_test">Сохранить и проверить</string>
+    <string name="invalid_port">Неверный номер порта (1–65535)</string>
+
+</resources>
+

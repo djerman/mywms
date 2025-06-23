@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/protocol_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_http"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/http"
+            android:checked="true"
+            android:textColor="@color/textBlack" />
+
+        <RadioButton
+            android:id="@+id/radio_https"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/https"
+            android:textColor="@color/textBlack" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/input_ip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ip_or_domain_hint"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/textBlack" />
+
+    <EditText
+        android:id="@+id/input_port"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/port_hint"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/textBlack" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save_button"
+        android:layout_marginTop="12dp"
+        style="@style/LosButton" />
+
+    <EditText
+        android:id="@+id/edit_scanner"
+        android:hint="@string/scanner_package_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/textBlack" />
+</LinearLayout>
