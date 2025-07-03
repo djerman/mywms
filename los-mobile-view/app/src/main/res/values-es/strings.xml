@@ -16,4 +16,8 @@
     <string name="save_and_test">Guardar y probar</string>
     <string name="invalid_port">Número de puerto no válido (1–65535)</string>
 
+    <string name="no_internet">No hay conexión a Internet</string>
+    <string name="connection_error">No se puede conectar con el servidor</string>
+
+    <string name="try_again">Intentar otra vez</string>
 </resources>

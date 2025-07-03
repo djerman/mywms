@@ -8,12 +8,43 @@
     android:background="@color/backgroundGray"
     tools:context=".MainActivity">
 
+    <!-- WebView prikaz -->
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:visibility="visible" />
 
+    <!-- Layout za prikaz greške -->
+    <LinearLayout
+        android:id="@+id/errorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/errorText"
+            style="@style/LosMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/connection_error"
+            android:padding="16dp" />
+
+        <Button
+            android:id="@+id/errorRetry"
+            style="@style/LosButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/try_again"
+            android:layout_marginTop="12dp" />
+    </LinearLayout>
+
+    <!-- Donји тастери -->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

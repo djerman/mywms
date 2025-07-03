@@ -16,4 +16,9 @@
     <string name="save_and_test">Сачувај и тестирај</string>
     <string name="invalid_port">Неисправан број порта (1–65535)</string>
 
+    <string name="no_internet">Интернет веза није доступна</string>
+    <string name="connection_error">Није могуће повезивање са сервером</string>
+
+    <string name="try_again">Pokušaj ponovo</string>
+
 </resources>

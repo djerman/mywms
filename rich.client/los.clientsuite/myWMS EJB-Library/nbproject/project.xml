@@ -122,10 +122,6 @@
                 <runtime-relative-path>ext/wms2-ejb.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/wms2-ejb.jar</binary-origin>
             </class-path-extension>
-            <class-path-extension>
-                <runtime-relative-path>ext/hibernate-core-5.3.20.Final.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/hibernate-core-5.3.20.Final.jar</binary-origin>
-            </class-path-extension>
         </data>
     </configuration>
 </project>

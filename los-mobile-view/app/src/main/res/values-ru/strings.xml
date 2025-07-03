@@ -16,5 +16,9 @@
     <string name="save_and_test">Сохранить и проверить</string>
     <string name="invalid_port">Неверный номер порта (1–65535)</string>
 
+    <string name="no_internet">Интернет-соединение недоступно</string>
+    <string name="connection_error">Не удалось подключиться к серверу</string>
+
+    <string name="try_again">Попробуйте еще раз</string>
 </resources>
 

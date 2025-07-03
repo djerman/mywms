@@ -22,4 +22,13 @@
         <item name="android:layout_margin">4dp</item>
     </style>
 
+    <!-- Custom button style like text view -->
+    <style name="LosMessage">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
 </resources>

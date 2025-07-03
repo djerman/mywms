@@ -16,5 +16,10 @@
     <string name="save_and_test">Speichern und testen</string>
     <string name="invalid_port">Ungültige Portnummer (1–65535)</string>
 
+    <string name="no_internet">Internetverbindung ist nicht verfügbar</string>
+    <string name="connection_error">Verbindung zum Server fehlgeschlagen</string>
+
+    <string name="try_again">Versuchen Sie es erneut</string>
+
 </resources>
 

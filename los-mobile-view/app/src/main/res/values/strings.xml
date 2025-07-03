@@ -16,5 +16,10 @@
     <string name="save_and_test">Save and test</string>
     <string name="invalid_port">Invalid port number (1–65535)</string>
 
+    <string name="no_internet">Internet connection is not available</string>
+    <string name="connection_error">Unable to connect to the server</string>
+
+    <string name="try_again">Try Again</string>
+
 </resources>
 
