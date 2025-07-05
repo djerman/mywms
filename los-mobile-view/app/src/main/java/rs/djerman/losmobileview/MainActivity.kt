@@ -3,10 +3,13 @@ package rs.djerman.losmobileview
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.webkit.*
 import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
@@ -14,38 +17,26 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 
-/**
- * MainActivity
- * Displays the configured myWMS mobile page in a WebView.
- * Handles barcode scanning and network errors.
- */
 class MainActivity : AppCompatActivity() {
 
-    // Persistent settings storage
     private lateinit var sharedPref: SharedPreferences
-
-    // UI components
     private lateinit var webView: WebView
     private lateinit var settingsButton: Button
     private lateinit var barcodeButton: Button
     private lateinit var errorLayout: LinearLayout
     private lateinit var errorText: TextView
     private lateinit var errorRetry: Button
-
-    // Barcode scanner launcher
-    private lateinit var barcodeLauncher: ActivityResultLauncher<Intent>
-
-    // Server base URL allowed for WebView
     private lateinit var allowedBaseUrl: String
+    private lateinit var barcodeLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Load server URL from saved preferences
+        // Load preferences
         sharedPref = getSharedPreferences("los_settings", MODE_PRIVATE)
         allowedBaseUrl = sharedPref.getString("server_url", null) ?: ""
 
-        // If no URL set, go to settings screen
+        // If URL is missing, redirect to settings screen
         if (allowedBaseUrl.isBlank()) {
             startActivity(Intent(this, SettingsActivity::class.java))
             finish()
@@ -54,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        // Initialize UI references
+        // Initialize UI elements
         webView = findViewById(R.id.webview)
         settingsButton = findViewById(R.id.btn_settings)
         barcodeButton = findViewById(R.id.btn_barcode)
@@ -62,12 +53,12 @@ class MainActivity : AppCompatActivity() {
         errorText = findViewById(R.id.errorText)
         errorRetry = findViewById(R.id.errorRetry)
 
-        // Retry button reloads the page after checking network
+        // Retry loading on button press
         errorRetry.setOnClickListener {
             if (isNetworkAvailable(this)) {
                 showWebView()
-                // Delay the URL loading slightly to avoid premature error
                 webView.postDelayed({
+                    Log.d("WEBVIEW", "Retry loading: $allowedBaseUrl")
                     webView.loadUrl(allowedBaseUrl)
                 }, 400)
             } else {
@@ -77,27 +68,35 @@ class MainActivity : AppCompatActivity() {
 
         // Configure WebView
         webView.settings.javaScriptEnabled = true
+        webView.settings.domStorageEnabled = true
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            webView.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+        }
+
         webView.webViewClient = object : WebViewClient() {
-            // Allow only URLs starting with configured base URL
             override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                 val requestedUrl = request.url.toString()
                 return !requestedUrl.startsWith(allowedBaseUrl)
             }
 
-            // Show error on generic load failure
             override fun onReceivedError(view: WebView, request: WebResourceRequest, error: WebResourceError) {
                 showErrorMessage(getString(R.string.connection_error))
             }
 
-            // Show error on HTTP error (e.g. 404, 500)
             override fun onReceivedHttpError(view: WebView, request: WebResourceRequest, errorResponse: WebResourceResponse) {
                 showErrorMessage(getString(R.string.connection_error))
             }
+
+            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                super.onPageStarted(view, url, favicon)
+                Log.d("WEBVIEW", "onPageStarted: $url")
+            }
         }
 
-        // Load the initial URL if network is available
+        // Load page or show network error
         if (isNetworkAvailable(this)) {
             showWebView()
+            Log.d("WEBVIEW", "Initial load: $allowedBaseUrl")
             webView.loadUrl(allowedBaseUrl)
         } else {
             showErrorMessage(getString(R.string.no_internet))
@@ -108,64 +107,80 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
 
-        // Handle result from barcode scanner app
+        // Barcode result handler
         barcodeLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
+            if (result.resultCode == RESULT_OK && result.data != null) {
                 val scanResult = result.data?.getStringExtra("SCAN_RESULT")
                 scanResult?.let {
-                    // Insert scanned value into active input field
-                    val js = "document.activeElement.value = '${it.replace("'", "\\'")}';"
+                    val js = """
+                        (function() {
+                            var ae = document.activeElement;
+                            if (ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA') && !ae.readOnly && !ae.disabled && (ae.type === 'text' || ae.type === 'search' || ae.type === 'number' || ae.type === 'tel')) {
+                                ae.value = '${it.replace("'", "\\'")}';
+                            }
+                        })();
+                    """.trimIndent()
                     webView.evaluateJavascript(js, null)
                 }
+
+                val scannerPackage = result.data?.component?.packageName
+                if (!scannerPackage.isNullOrBlank()) {
+                    sharedPref.edit().putString("scanner_package", scannerPackage).apply()
+                    Log.d("SCANNER", "Saved scanner package: $scannerPackage")
+                }
             }
         }
 
-        // Trigger external barcode scanning app
+        // Launch scanner or install if missing
         barcodeButton.setOnClickListener {
-            val scannerPackage = sharedPref.getString("scanner_package", null)
+            val intent = Intent(this, BarcodeScannerActivity::class.java)
+            barcodeLauncher.launch(intent)
+            /*val scannerPackage = sharedPref.getString("scanner_package", null)
+            val intent = Intent("com.google.zxing.client.android.SCAN")
+
+            if (!scannerPackage.isNullOrBlank()) {
+                intent.setPackage(scannerPackage)
+            }
+
             try {
-                val intent = Intent("com.google.zxing.client.android.SCAN")
-                if (!scannerPackage.isNullOrBlank()) {
-                    intent.setPackage(scannerPackage)
-                }
                 barcodeLauncher.launch(intent)
             } catch (e: Exception) {
-                // If scanner not installed, open Play Store
-                val playIntent = Intent(Intent.ACTION_VIEW)
-                playIntent.data = "market://search?q=barcode+scanner&c=apps".toUri()
-                startActivity(playIntent)
-            }
+                sharedPref.edit().remove("scanner_package").apply()
+                Toast.makeText(this, getString(R.string.failed_to_launch_scanner), Toast.LENGTH_SHORT).show()
+                openPlayStore()
+            }*/
         }
     }
 
-    /**
-     * Check and refresh connectivity on resume
-     */
+    private fun openPlayStore() {
+        val playIntent = Intent(Intent.ACTION_VIEW)
+        playIntent.data = "market://search?q=barcode+scanner&c=apps".toUri()
+        startActivity(playIntent)
+    }
+
     override fun onResume() {
         super.onResume()
-        if (isNetworkAvailable(this)) {
-            showWebView()
-            webView.loadUrl(allowedBaseUrl)
+        Log.d("WEBVIEW", "onResume: current URL = ${webView.url}")
+        if (webView.visibility != View.VISIBLE || webView.url.isNullOrBlank() || webView.url == "about:blank") {
+            if (isNetworkAvailable(this)) {
+                showWebView()
+                Log.d("WEBVIEW", "Resumed load: $allowedBaseUrl")
+                webView.loadUrl(allowedBaseUrl)
+            } else {
+                showErrorMessage(getString(R.string.no_internet))
+            }
         } else {
-            showErrorMessage(getString(R.string.no_internet))
+            Log.d("WEBVIEW", "WebView already loaded, skipping reload")
         }
     }
 
-    /**
-     * Checks for active internet connectivity
-     */
     private fun isNetworkAvailable(context: Context): Boolean {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             try {
-                val network = connectivityManager.activeNetwork
-                if (network != null) {
-                    val capabilities = connectivityManager.getNetworkCapabilities(network)
-                    capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
-                } else {
-                    false
-                }
+                val network = connectivityManager.activeNetwork ?: return false
+                val capabilities = connectivityManager.getNetworkCapabilities(network)
+                capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
             } catch (e: SecurityException) {
                 false
             }
@@ -177,18 +192,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Displays an error message and hides the WebView
-     */
     private fun showErrorMessage(message: String) {
         webView.visibility = android.view.View.GONE
         errorLayout.visibility = android.view.View.VISIBLE
         errorText.text = message
     }
 
-    /**
-     * Shows the WebView and hides the error message layout
-     */
     private fun showWebView() {
         webView.visibility = android.view.View.VISIBLE
         errorLayout.visibility = android.view.View.GONE

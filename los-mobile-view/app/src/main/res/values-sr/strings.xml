@@ -5,13 +5,12 @@
     <string name="url_hint">Унесите URL (нпр. http://192.168.0.10:8080/los-mobile)</string>
     <string name="open_settings">Подешавања</string>
     <string name="scan_barcode">Скенирај</string>
-    <string name="scanner_package_hint">Унесите назив пакета апликације за скенирање (опционо)</string>
 
     <!-- Нови текстови за конфигурацију сервера -->
     <string name="select_protocol">Изаберите протокол:</string>
     <string name="http">http</string>
     <string name="https">https</string>
-    <string name="ip_or_domain_hint">IP адреса или домен (нпр. 192.168.1.1 или mywms.com)</string>
+    <string name="ip_or_domain_hint">IP адреса или домен</string>
     <string name="port_hint">Порт (нпр. 8080)</string>
     <string name="save_and_test">Сачувај и тестирај</string>
     <string name="invalid_port">Неисправан број порта (1–65535)</string>
@@ -20,5 +19,14 @@
     <string name="connection_error">Није могуће повезивање са сервером</string>
 
     <string name="try_again">Pokušaj ponovo</string>
+
+    <string name="select_scanner_app_title">Изаберите апликацију за скенирање</string>
+    <string name="selected_scanner_app">Изабрано: %1$s</string>
+    <string name="no_scanner_apps_found">Није пронађена ниједна апликација за скенирање</string>
+    <string name="failed_to_launch_scanner">Није могуће покренути апликацију за скенирање</string>
+
+    <string name="scan_timeout">Време за скенирање је истекло</string>
+    <string name="camera_permission_required">Потребна је дозвола за камеру ради скенирања баркодова</string>
+    <string name="scan_failed">Скенирање баркода није успело</string>
 
 </resources>

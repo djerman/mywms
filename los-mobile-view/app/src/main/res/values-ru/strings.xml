@@ -5,13 +5,12 @@
     <string name="url_hint">Введите URL (например: http://192.168.0.10:8080/los-mobile)</string>
     <string name="open_settings">Настройки</string>
     <string name="scan_barcode">Сканировать</string>
-    <string name="scanner_package_hint">Введите пакет сканера (необязательно)</string>
 
     <!-- Новые строки для конфигурации сервера -->
     <string name="select_protocol">Выберите протокол:</string>
     <string name="http">http</string>
     <string name="https">https</string>
-    <string name="ip_or_domain_hint">IP-адрес или домен (например: 192.168.1.1 или mywms.com)</string>
+    <string name="ip_or_domain_hint">IP-адрес или домен</string>
     <string name="port_hint">Порт (например: 8080)</string>
     <string name="save_and_test">Сохранить и проверить</string>
     <string name="invalid_port">Неверный номер порта (1–65535)</string>
@@ -20,5 +19,15 @@
     <string name="connection_error">Не удалось подключиться к серверу</string>
 
     <string name="try_again">Попробуйте еще раз</string>
+
+    <string name="select_scanner_app_title">Выберите приложение для сканирования</string>
+    <string name="selected_scanner_app">Выбрано: %1$s</string>
+    <string name="no_scanner_apps_found">Приложения для сканирования не найдены</string>
+    <string name="failed_to_launch_scanner">Не удалось запустить приложение для сканирования</string>
+
+    <string name="scan_timeout">Время сканирования истекло</string>
+    <string name="camera_permission_required">Требуется доступ к камере для сканирования штрихкодов</string>
+    <string name="scan_failed">Сканирование штрихкода не удалось</string>
+
 </resources>
 

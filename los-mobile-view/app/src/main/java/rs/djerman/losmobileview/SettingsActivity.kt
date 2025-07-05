@@ -12,7 +12,6 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var radioHttps: RadioButton
     private lateinit var inputIp: EditText
     private lateinit var inputPort: EditText
-    private lateinit var inputScanner: EditText
     private lateinit var saveBtn: Button
     private lateinit var sharedPref: SharedPreferences
 
@@ -27,19 +26,15 @@ class SettingsActivity : AppCompatActivity() {
         radioHttps = findViewById(R.id.radio_https)
         inputIp = findViewById(R.id.input_ip)
         inputPort = findViewById(R.id.input_port)
-        inputScanner = findViewById(R.id.edit_scanner)
         saveBtn = findViewById(R.id.btn_save)
 
         // Load saved values
         val savedUrl = sharedPref.getString("server_url", "") ?: ""
-        val savedScanner = sharedPref.getString("scanner_package", "") ?: ""
 
         if (savedUrl.startsWith("https://")) {
             radioHttps.isChecked = true
-            radioHttp.isChecked = false
         } else {
             radioHttp.isChecked = true
-            radioHttps.isChecked = false
         }
 
         val urlWithoutPrefix = savedUrl.removePrefix("http://").removePrefix("https://")
@@ -50,14 +45,11 @@ class SettingsActivity : AppCompatActivity() {
             inputPort.setText(portPart)
         }
 
-        inputScanner.setText(savedScanner)
-
         // Save button logic
         saveBtn.setOnClickListener {
             val protocol = if (radioHttps.isChecked) "https" else "http"
             val ip = inputIp.text.toString().trim()
             val port = inputPort.text.toString().trim()
-            val scannerPkg = inputScanner.text.toString().trim()
 
             if (ip.isBlank()) {
                 inputIp.error = getString(R.string.ip_or_domain_hint)
@@ -74,7 +66,6 @@ class SettingsActivity : AppCompatActivity() {
 
             sharedPref.edit().apply {
                 putString("server_url", finalUrl)
-                putString("scanner_package", scannerPkg)
                 apply()
             }
 

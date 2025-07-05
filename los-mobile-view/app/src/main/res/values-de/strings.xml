@@ -5,13 +5,12 @@
     <string name="url_hint">URL eingeben (z. B. http://192.168.0.10:8080/los-mobile)</string>
     <string name="open_settings">Einstellungen</string>
     <string name="scan_barcode">Scannen</string>
-    <string name="scanner_package_hint">Scanner-App-Paketname eingeben (optional)</string>
 
     <!-- Ergänzte Zeichenketten für Serverkonfiguration -->
     <string name="select_protocol">Protokoll auswählen:</string>
     <string name="http">http</string>
     <string name="https">https</string>
-    <string name="ip_or_domain_hint">IP-Adresse oder Domain (z. B. 192.168.1.1 oder mywms.com)</string>
+    <string name="ip_or_domain_hint">IP-Adresse oder Domain</string>
     <string name="port_hint">Port (z. B. 8080)</string>
     <string name="save_and_test">Speichern und testen</string>
     <string name="invalid_port">Ungültige Portnummer (1–65535)</string>
@@ -20,6 +19,15 @@
     <string name="connection_error">Verbindung zum Server fehlgeschlagen</string>
 
     <string name="try_again">Versuchen Sie es erneut</string>
+
+    <string name="select_scanner_app_title">Scanner-Anwendung auswählen</string>
+    <string name="selected_scanner_app">Ausgewählt: %1$s</string>
+    <string name="no_scanner_apps_found">Keine Scanner-Anwendungen gefunden</string>
+    <string name="failed_to_launch_scanner">Scanner-Anwendung konnte nicht gestartet werden</string>
+
+    <string name="scan_timeout">Zeitüberschreitung beim Scannen</string>
+    <string name="camera_permission_required">Kamerazugriff ist erforderlich, um Barcodes zu scannen</string>
+    <string name="scan_failed">Barcode-Scan fehlgeschlagen</string>
 
 </resources>
 
