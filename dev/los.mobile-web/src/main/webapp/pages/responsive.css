@@ -55,13 +55,14 @@ input, button {
 		padding: 0.5em;
 		width: 72px;
 	}
+	
 	input {
 		font-size: 1.5em;
 		padding: 0.5em;
 		box-sizing: border-box;
 	}
 	
-	/* Специјално за BUTTON_LOGOUT – фиксна ширина */
+	/* Specially for BUTTON_LOGOUT – fix wdth */
 	.commandButton[id*="BUTTON_LOGOUT"]{
 		width: 144px;
 		display: inline-block;
@@ -75,7 +76,7 @@ input, button {
 	}
 	
 	/* Сви остали .commandButton дугмићи (сем logout) – 100% ширина, више редова ако треба */
-	.commandButton:not([id*="BUTTON_LOGOUT"]) {
+	.commandButton:not([id*="BUTTON_LOGOUT"]):not([id*="forwardButton"]):not([id*="backButton"]) {
 		display: block;
 		width: 100%;
 		max-width: 100%;
@@ -84,8 +85,17 @@ input, button {
 		text-align: center;
 	}
 
-	/* Фиксна ширина само за одређена дугмад */
-	.commandButton[id*="forwardButton"], 
+	/* Fix width for forward button */
+	.commandButton[id*="forwardButton"]{
+		/*width: 144px !important;*/
+		min-width: 6em;
+		max-width: 100%;
+		/*width: auto;*/
+		display: inline-block;
+		white-space: nowrap;
+	}
+	
+	/* Fix width for back button */
 	.commandButton[id*="backButton"] {
 		width: 144px !important;
 		display: inline-block;
@@ -103,10 +113,36 @@ input, button {
 		box-sizing: border-box;
 	}
 	
+	/* Override hardcoded HTML attribute nowrap in <td> to allow wrapping */
+    td[nowrap] {
+        white-space: normal !important;
+    }
+    
 	/*ово је за приказ текста параметар:  вредност */
-	.param, .label {
+	.param {
 		font-size: 1.2em;
 		padding: 0.2em;
 		box-sizing: border-box;
+		
+		/* Prevent param text (left side) from wrapping */
+	    white-space: nowrap;
+	    text-align: left; /* optional, just to be sure */
 	}
+	
+	.label {
+		font-size: 1em;
+		padding: 0.1em;
+		box-sizing: border-box;
+		/* Ensure label values can wrap and align properly on small screens */
+		white-space: normal !important; /* allow wrapping */
+        word-break: break-word;         /* break long words if needed */
+        text-align: right;              /* align value to the right */
+	}
+	
+	/* Optional: allow tables to auto-size based on content (instead of fixed layout) */
+    table {
+       table-layout: auto !important;
+       width: 100%;
+    }
+    
 }

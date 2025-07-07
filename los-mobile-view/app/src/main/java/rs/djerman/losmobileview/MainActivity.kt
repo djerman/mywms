@@ -16,6 +16,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
+import android.net.http.SslError
+import android.webkit.SslErrorHandler
 
 class MainActivity : AppCompatActivity() {
 
@@ -69,6 +71,11 @@ class MainActivity : AppCompatActivity() {
         // Configure WebView
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
+
+        // Use modern Chrome-style user agent to avoid server rejection
+        webView.settings.userAgentString =
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webView.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
         }
@@ -84,6 +91,13 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onReceivedHttpError(view: WebView, request: WebResourceRequest, errorResponse: WebResourceResponse) {
+                showErrorMessage(getString(R.string.connection_error))
+            }
+
+            // Handles SSL certificate errors (invalid HTTPS) and shows fallback UI instead of crashing
+            override fun onReceivedSslError(view: WebView, handler: SslErrorHandler, error: SslError) {
+                Log.e("WEBVIEW", "SSL Error: ${error.primaryError}")
+                handler.cancel() // Do not proceed for invalid certificates
                 showErrorMessage(getString(R.string.connection_error))
             }
 
@@ -132,6 +146,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Launch scanner or install if missing
+        @androidx.camera.core.ExperimentalGetImage
         barcodeButton.setOnClickListener {
             val intent = Intent(this, BarcodeScannerActivity::class.java)
             barcodeLauncher.launch(intent)
