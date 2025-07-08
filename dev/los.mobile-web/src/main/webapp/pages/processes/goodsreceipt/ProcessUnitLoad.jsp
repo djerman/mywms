@@ -101,13 +101,13 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                             	<table width="100%">
                                     <tr>
                                         <th scope="col">
-			                                <!-- <h:selectOneMenu id="ultComboBox"
+			                                <h:selectOneMenu id="ultComboBox"
 			                                                 value="#{GoodsReceiptBean.selectedUnitLoadType}" style="width:100%;" >
 			                                    <f:selectItems
 			                                        value="#{GoodsReceiptBean.unitLoadTypeList}" />
-			                                </h:selectOneMenu> -->
+			                                </h:selectOneMenu>
 
-										<div class="custom-select-wrapper">
+										<!-- <div class="custom-select-wrapper">
 											<div class="custom-select"><h:outputText value="#{''}" /></div>
 											<div class="custom-options">
 												<c:forEach var="item"
@@ -116,7 +116,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 												</c:forEach>
 											</div>
 											<h:inputHidden id="hiddenUltSelect" value="#{GoodsReceiptBean.selectedUnitLoadType}" />
-										</div>
+										</div> -->
 
 									</th>
                                     </tr>

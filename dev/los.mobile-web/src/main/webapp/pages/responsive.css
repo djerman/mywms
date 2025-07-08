@@ -32,8 +32,8 @@ input, button {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		font-size: 1.4em;
-		margin-bottom: 1em;
+		font-size: 1.2em;
+		margin-bottom: 0.8em;
 		flex-wrap: wrap;
 	}
 	
@@ -51,14 +51,14 @@ input, button {
 	}
 	
 	.navigateButton {
-		font-size: 1.5em;
-		padding: 0.5em;
+		font-size: 1.2em;
+		padding: 0.4em;
 		width: 72px;
 	}
 	
 	input {
-		font-size: 1.5em;
-		padding: 0.5em;
+		font-size: 1.2em;
+		padding: 0.4em;
 		box-sizing: border-box;
 	}
 	
@@ -70,8 +70,8 @@ input, button {
 	}
 
 	.commandButton {
-		font-size: 1.5em;
-		padding: 0.5em;
+		font-size: 1.2em;
+		padding: 0.4em;
 		box-sizing: border-box;
 	}
 	
@@ -106,12 +106,14 @@ input, button {
 		padding: 10px !important;
 	}
 	
-	/*Ово важи за сваки <select> елемент чији id се завршава на orderComboBox, без обзира на то што му претходи*/
-	select[id$="orderComboBox"] {
-		font-size: 1.5em;
-		padding: 0.5em;
-		box-sizing: border-box;
-	}
+    /* Applies to every <select> element whose ID ends with 'orderComboBox' or 'ultComboBox', regardless of prefix */
+    select[id$="orderComboBox"],
+    select[id$="ultComboBox"],
+    select[id$="adviceComboBox"] {
+	    font-size: 1.2em;
+	    padding: 0.4em;
+	    box-sizing: border-box;
+    }
 	
 	/* Override hardcoded HTML attribute nowrap in <td> to allow wrapping */
     td[nowrap] {
@@ -120,7 +122,7 @@ input, button {
     
 	/*ово је за приказ текста параметар:  вредност */
 	.param {
-		font-size: 1.2em;
+		font-size: 1.0em;
 		padding: 0.2em;
 		box-sizing: border-box;
 		
@@ -130,8 +132,8 @@ input, button {
 	}
 	
 	.label {
-		font-size: 1em;
-		padding: 0.1em;
+		font-size: 0.8em;
+		padding: 0.2em;
 		box-sizing: border-box;
 		/* Ensure label values can wrap and align properly on small screens */
 		white-space: normal !important; /* allow wrapping */

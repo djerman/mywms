@@ -108,12 +108,12 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                             	<table width="100%">
                                     <tr>
                                         <th scope="col">
-			                                <!-- <h:selectOneMenu id="ultComboBox"
+			                                <h:selectOneMenu id="ultComboBox"
 			                                                 value="#{GRDirectBean.selectedUnitLoadType}" style="width:100%;" >
 			                                    <f:selectItems
 			                                        value="#{GRDirectBean.unitLoadTypeList}" />
-			                                </h:selectOneMenu> -->
-										<div class="custom-select-wrapper">
+			                                </h:selectOneMenu>
+										<!-- <div class="custom-select-wrapper">
 											<div class="custom-select">
 												<h:outputText value="#{''}" />
 											</div>
@@ -125,7 +125,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 											</div>
 											<h:inputHidden id="hiddenSelect"
 												value="#{GRDirectBean.selectedUnitLoadType}" />
-										</div>
+										</div> -->
 
 									</th>
                                     </tr>

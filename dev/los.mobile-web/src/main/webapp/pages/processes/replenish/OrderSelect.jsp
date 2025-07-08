@@ -49,14 +49,14 @@
                             </td>
                         </tr><tr>
                             <td>
-                                <!-- <h:selectOneMenu id="orderComboBox" 
+                                <h:selectOneMenu id="orderComboBox" 
                                 				onchange="this.form.submit();"
                                 				valueChangeListener="#{ReplenishBean.valueChanged}"
                                                 value="#{ReplenishBean.selectedOrder}" style="width:100%;" >
                                     <f:selectItems
                                         value="#{ReplenishBean.orderList}" />
-                                </h:selectOneMenu> -->
-							<div class="custom-select-wrapper">
+                                </h:selectOneMenu>
+							<!-- <div class="custom-select-wrapper">
 								<div class="custom-select">
 									<h:outputText value="#{''}" />
 								</div>
@@ -66,7 +66,7 @@
 									</c:forEach>
 								</div>
 								<h:inputHidden id="hiddenSelect" value="#{ReplenishBean.selectedOrder}" />
-							</div>
+							</div> -->
 						</td>
                         </tr>
 					</table>

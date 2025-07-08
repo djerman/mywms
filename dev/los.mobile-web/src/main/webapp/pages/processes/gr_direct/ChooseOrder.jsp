@@ -55,12 +55,12 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                             </td>
                         </tr><tr>
                             <td>
-                             <!--  <h:selectOneMenu id="orderComboBox"
+                             <h:selectOneMenu id="orderComboBox"
                                                  value="#{GRDirectBean.selectedGoodsReceipt}" style="width:100%;" >
                                     <f:selectItems
                                         value="#{GRDirectBean.goodsReceiptList}" />
-                                </h:selectOneMenu> -->
-							<div class="custom-select-wrapper">
+                                </h:selectOneMenu>
+							<!--  <div class="custom-select-wrapper">
 								<div class="custom-select"><h:outputText value="#{''}" /></div>
 								<div class="custom-options">
 									<c:forEach var="item" items="${GRDirectBean.goodsReceiptList}">
@@ -68,7 +68,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 									</c:forEach>
 								</div>
 								<h:inputHidden id="hiddenSelect" value="#{GRDirectBean.selectedGoodsReceipt}" />
-							</div>
+							</div> -->
 
 						</td>
                         </tr>
