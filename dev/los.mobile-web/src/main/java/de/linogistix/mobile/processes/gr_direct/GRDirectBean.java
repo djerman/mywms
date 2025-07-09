@@ -115,10 +115,7 @@ public class GRDirectBean extends BasicDialogBean {
 	protected boolean limitAmountToNotified = false;
 	
 	protected String currentMode;
-	
 
-
-	
 	
 	protected StorageLocation currentFixTarget;
 	protected String inputLotName;
@@ -144,8 +141,6 @@ public class GRDirectBean extends BasicDialogBean {
 	protected Long selectedGoodsReceiptId;
 	protected Long selectedAdviceId;
 	
-	
-
 
 	protected QueryUnitLoadTypeServiceRemote queryUltService;
 	
@@ -232,7 +227,7 @@ public class GRDirectBean extends BasicDialogBean {
 				currentMode = MODE_MATERIAL; 
 			}
 		}
-		
+
 	}
 
 	protected void reset() {
@@ -336,11 +331,6 @@ public class GRDirectBean extends BasicDialogBean {
 	
 	
 	
-	
-	
-	
-	
-	
 	// ***********************************************************************
 	// chooseOrder.jsp
 	// ***********************************************************************
@@ -362,7 +352,7 @@ public class GRDirectBean extends BasicDialogBean {
 			goodsReceiptList = new ArrayList<SelectItem>();
 			if( grList.size() != 1 ) {
 				for(GoodsReceiptTO gr:grList){
-					String label = gr.getGoodsReceiptNo()+" / "+gr.getSuplier()+" / "+gr.getDeliveryNoteNo();
+					String label = gr.getGoodsReceiptNo() + " / " + gr.getSuplier() + " / " + gr.getDeliveryNoteNo();
 					goodsReceiptList.add(new SelectItem(gr.getId(), label));
 				}
 				return"";
@@ -375,6 +365,7 @@ public class GRDirectBean extends BasicDialogBean {
 			JSFHelper.getInstance().message( resolve("MsgSelectGR") );
 			return "";
 		}
+		
 		try {
 			currentGoodsReceipt = queryGoodsReceiptService.fetchEager(selectedGoodsReceiptId);
 			
@@ -421,7 +412,7 @@ public class GRDirectBean extends BasicDialogBean {
 			grList = queryGoodsReceiptService.getDtoListByStates(OrderState.CREATED, OrderState.STARTED);
 			
 			for(GoodsReceiptTO gr:grList){
-				String label = gr.getGoodsReceiptNo()+" / "+gr.getSuplier()+" / "+gr.getDeliveryNoteNo();
+				String label = gr.getGoodsReceiptNo() + " / " + gr.getSuplier() + " / " + gr.getDeliveryNoteNo();
 				goodsReceiptList.add(new SelectItem(gr.getId(), label));
 			}
 		}
@@ -453,7 +444,7 @@ public class GRDirectBean extends BasicDialogBean {
 		Long lastAdviceId = currentAdvice == null ? null : currentAdvice.getId();
 		currentAdvice = null;
 		currentItemData = null;
-		
+
 		if( code.length() > 0 ) {
 			
 			List<AdviceLine> adList;
@@ -465,7 +456,7 @@ public class GRDirectBean extends BasicDialogBean {
 			adviceList = new ArrayList<SelectItem>();
 			if( adList.size() != 1 ) {
 				for(AdviceLine ad:adList){
-					String label = ad.getItemData().getNumber()+" / "+(ad.getLotNumber() == null ? " --- / " : ad.getLotNumber()+" / ")+ad.getAmount();
+					String label = ad.getItemData().getNumber() + " / " + (ad.getLotNumber() == null ? " --- / " : ad.getLotNumber() + " / ") + ad.getAmount();
 					adviceList.add(new SelectItem(ad.getId(), label));
 				}
 				return"";
@@ -477,6 +468,7 @@ public class GRDirectBean extends BasicDialogBean {
 		if( selectedAdviceId == null ) {
 			selectedAdviceId = lastAdviceId;
 		}
+		
 		if( selectedAdviceId == null ) {
 			JSFHelper.getInstance().message( resolve("MsgSelectAdvice") );
 			return "";
@@ -486,7 +478,7 @@ public class GRDirectBean extends BasicDialogBean {
 			currentAdvice = queryAdviceService.getById(selectedAdviceId);
 			currentItemData = currentAdvice.getItemData();
 		} catch (Exception e) {
-			log.error("Cannot find advice with id="+selectedAdviceId);
+			log.error("Cannot find advice with id=" + selectedAdviceId);
 			JSFHelper.getInstance().message( resolve("MsgSelectAdvice") );
 			return "";
 		}
@@ -494,19 +486,16 @@ public class GRDirectBean extends BasicDialogBean {
 		
 		if( lastAdviceId != null && lastAdviceId.equals(selectedAdviceId) ) {
 			initUl();
-		}
-		else {
+		} else {
 			initPos();
 		}
 
 		ItemData itemData = currentAdvice.getItemData();
 		if( collectLotAlways || itemData.isLotMandatory() ) {
 			return GRDirectNavigationEnum.GRD_ENTER_LOT.name();
-		}
-		else if( itemData.isBestBeforeMandatory() ) {
+		} else if( itemData.isBestBeforeMandatory() ) {
 			return GRDirectNavigationEnum.GRD_ENTER_LOTDATE.name();
-		}
-		else if( itemData.getSerialNoRecordType() == SerialNoRecordType.ALWAYS_RECORD ) {
+		} else if( itemData.getSerialNoRecordType() == SerialNoRecordType.ALWAYS_RECORD ) {
 			return GRDirectNavigationEnum.GRD_ENTER_SERIAL.name();
 		}
 		
@@ -519,10 +508,10 @@ public class GRDirectBean extends BasicDialogBean {
 	}
 
 	public List<SelectItem> getAssignedAdviceList(){
-		
-		if( adviceList == null ) {
+
+		if( true /*adviceList == null*/ ) {
 			adviceList = new ArrayList<SelectItem>();
-		
+		    
 			if( currentGoodsReceipt == null ) {
 				return adviceList;
 			}
@@ -535,7 +524,10 @@ public class GRDirectBean extends BasicDialogBean {
 						continue;
 					}
 				}
-				String label = ad.getItemData().getNumber()+" / "+(ad.getLotNumber() == null ? " --- / " : ad.getLotNumber()+" / ")+ad.getConfirmedAmount();
+				
+				String label = ad.getItemData().getNumber() + " / " + (ad.getLotNumber() == null ? " --- / " : ad.getLotNumber() + " / ")
+						+ ad.getAmount() + " / " + ad.getConfirmedAmount();
+				
 				adviceList.add(new SelectItem(ad.getId(), label));
 			}
 		}
@@ -1209,7 +1201,9 @@ public class GRDirectBean extends BasicDialogBean {
 		if( currentAdvice == null ) {
 			log.error(logStr+"Advice not loaded");
 			JSFHelper.getInstance().message( resolve("MsgAdviceNotLoaded") );
-			return GRDirectNavigationEnum.GRD_CHOOSE_POS.name();
+			//return GRDirectNavigationEnum.GRD_CHOOSE_POS.name();
+			/*changed because of refreshing current state of each advice after change is made*/
+			return GRDirectNavigationEnum.GRD_CHOOSE_GR.name();
 		}
 		
 		ItemData item = currentAdvice.getItemData();
@@ -1252,7 +1246,9 @@ public class GRDirectBean extends BasicDialogBean {
 			return "";
 		}
 		
-		return GRDirectNavigationEnum.GRD_CHOOSE_POS.name();
+		//return GRDirectNavigationEnum.GRD_CHOOSE_POS.name();
+		/*changed because of refreshing current state of each advice after change is made*/
+		return GRDirectNavigationEnum.GRD_CHOOSE_GR.name();
 	}
 
 	

@@ -27,6 +27,31 @@ input, button {
 	padding: 1em;
     font-size: 1.2em;
 }*/
+
+:root {
+  /* Font sizes */
+  --font-size-base: 1.2em;
+  --font-size-label: 0.8em;
+  --font-size-param: 1.0em;
+  --font-size-button: 1.2em;
+  --font-size-header: 1.2em;
+
+  /* Padding */
+  --padding-small: 0.2em;
+  --padding-medium: 0.4em;
+  --padding-button: 0.4em;
+  --padding-button-bar: 0.2em;
+
+  /* Widths */
+  --button-width-default: 6em;/*144px;*/
+  --button-width-narrow: 3.0em;/*72px;*/
+
+  /* Colors */
+  --color-primary: #f8b300;
+  --color-background: #C0C0C0;
+  --color-text: #000000;
+}
+
 @media screen and (min-width: 360px) {
 	.pageheader {
 		display: flex;
@@ -51,9 +76,9 @@ input, button {
 	}
 	
 	.navigateButton {
-		font-size: 1.2em;
-		padding: 0.4em;
-		width: 72px;
+	    font-size: var(--font-size-button);
+	    padding: var(--padding-button);
+	    width: var(--button-width-narrow);
 	}
 	
 	input {
@@ -62,18 +87,21 @@ input, button {
 		box-sizing: border-box;
 	}
 	
-	/* Specially for BUTTON_LOGOUT – fix wdth */
-	.commandButton[id*="BUTTON_LOGOUT"]{
-		width: 144px;
-		display: inline-block;
-		white-space: nowrap;
-	}
+	/* Specially for BUTTON_LOGOUT and backButton – fix wdth */
+	.commandButton[id*="BUTTON_LOGOUT"],
+    .commandButton[id*="backButton"] {
+	    width: var(--button-width-default) !important;
+	    display: inline-block;
+	    white-space: nowrap;
+    }
 
-	.commandButton {
-		font-size: 1.2em;
-		padding: 0.4em;
-		box-sizing: border-box;
-	}
+    .commandButton {
+	    font-size: var(--font-size-button);
+	    padding: var(--padding-button);
+	    box-sizing: border-box;
+	    margin-right: var(--padding-button-bar);
+	    margin-top: var(--padding-button-bar);
+    }
 	
 	/* Сви остали .commandButton дугмићи (сем logout) – 100% ширина, више редова ако треба */
 	.commandButton:not([id*="BUTTON_LOGOUT"]):not([id*="forwardButton"]):not([id*="backButton"]) {
@@ -95,23 +123,16 @@ input, button {
 		white-space: nowrap;
 	}
 	
-	/* Fix width for back button */
-	.commandButton[id*="backButton"] {
-		width: 144px !important;
-		display: inline-block;
-		white-space: nowrap;
-	}
-	
 	.buttonbar {
-		padding: 10px !important;
+		/*padding: 10px !important;*/
 	}
 	
     /* Applies to every <select> element whose ID ends with 'orderComboBox' or 'ultComboBox', regardless of prefix */
     select[id$="orderComboBox"],
     select[id$="ultComboBox"],
     select[id$="adviceComboBox"] {
-	    font-size: 1.2em;
-	    padding: 0.4em;
+	    font-size: var(--font-size-base);
+	    padding: var(--padding-medium);
 	    box-sizing: border-box;
     }
 	
@@ -122,9 +143,9 @@ input, button {
     
 	/*ово је за приказ текста параметар:  вредност */
 	.param {
-		font-size: 1.0em;
-		padding: 0.2em;
-		box-sizing: border-box;
+	    font-size: var(--font-size-param);
+	    padding: var(--padding-small);
+	    box-sizing: border-box;
 		
 		/* Prevent param text (left side) from wrapping */
 	    white-space: nowrap;
@@ -132,9 +153,9 @@ input, button {
 	}
 	
 	.label {
-		font-size: 0.8em;
-		padding: 0.2em;
-		box-sizing: border-box;
+	    font-size: var(--font-size-label);
+	    padding: var(--padding-small);
+	    box-sizing: border-box;
 		/* Ensure label values can wrap and align properly on small screens */
 		white-space: normal !important; /* allow wrapping */
         word-break: break-word;         /* break long words if needed */
