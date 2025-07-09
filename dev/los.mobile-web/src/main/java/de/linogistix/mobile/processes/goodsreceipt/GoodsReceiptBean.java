@@ -134,8 +134,8 @@ public class GoodsReceiptBean extends BasicDialogBean {
 			grList = queryGoodsReceiptService.getDtoListByStates(OrderState.CREATED, OrderState.STARTED);
 			
 			for(GoodsReceiptTO gr:grList){
-				StringBuffer label = new StringBuffer(gr.getGoodsReceiptNo()+"/");
-				label.append(gr.getSuplier()+"/");
+				StringBuffer label = new StringBuffer(gr.getGoodsReceiptNo() + "/");
+				label.append(gr.getSuplier() + "/");
 				label.append(gr.getDeliveryNoteNo());
 //				log.info("Add: " + gr.getGoodsReceiptNo());
 	
@@ -146,8 +146,8 @@ public class GoodsReceiptBean extends BasicDialogBean {
 		List<SelectItem> selList = new ArrayList<SelectItem>();
 		for( Entry<String,GoodsReceiptTO> entry : goodsReceiptMap.entrySet()) {
 			GoodsReceiptTO gr = entry.getValue();
-			StringBuffer label = new StringBuffer(gr.getGoodsReceiptNo()+"/");
-			label.append(gr.getSuplier()+"/");
+			StringBuffer label = new StringBuffer(gr.getGoodsReceiptNo() + "/");
+			label.append(gr.getSuplier() + "/");
 			label.append(gr.getDeliveryNoteNo());
 			selList.add(new SelectItem(entry.getKey(), label.toString()));
 		}
@@ -203,13 +203,13 @@ public class GoodsReceiptBean extends BasicDialogBean {
 		
 		for(AdviceLine ad:adList){
 			
-			StringBuffer label = new StringBuffer(ad.getItemData().getNumber()+"/");
+			StringBuffer label = new StringBuffer(ad.getItemData().getNumber() + "/");
 			if(ad.getLotNumber() != null){
-				label.append(ad.getLotNumber()+"/");
+				label.append(ad.getLotNumber() + "/");
 			}else{
 				label.append("---/");
 			}
-			label.append(ad.getAmount());
+			label.append(ad.getAmount() + "/" + ad.getConfirmedAmount());
 			
 			adviceMap.put(ad.getLineNumber(), ad);
 			selList.add(new SelectItem(ad.getLineNumber(), label.toString()));

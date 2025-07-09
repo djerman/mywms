@@ -456,7 +456,8 @@ public class GRDirectBean extends BasicDialogBean {
 			adviceList = new ArrayList<SelectItem>();
 			if( adList.size() != 1 ) {
 				for(AdviceLine ad:adList){
-					String label = ad.getItemData().getNumber() + " / " + (ad.getLotNumber() == null ? " --- / " : ad.getLotNumber() + " / ") + ad.getAmount();
+					String label = ad.getItemData().getNumber() + "/" + (ad.getLotNumber() == null ? "---/ " : ad.getLotNumber() + "/") 
+							+ ad.getAmount() + " / " + ad.getConfirmedAmount();
 					adviceList.add(new SelectItem(ad.getId(), label));
 				}
 				return"";
@@ -525,8 +526,8 @@ public class GRDirectBean extends BasicDialogBean {
 					}
 				}
 				
-				String label = ad.getItemData().getNumber() + " / " + (ad.getLotNumber() == null ? " --- / " : ad.getLotNumber() + " / ")
-						+ ad.getAmount() + " / " + ad.getConfirmedAmount();
+				String label = ad.getItemData().getNumber() + "/" + (ad.getLotNumber() == null ? "--- /" : ad.getLotNumber() + "/")
+						+ ad.getAmount() + "/" + ad.getConfirmedAmount();
 				
 				adviceList.add(new SelectItem(ad.getId(), label));
 			}
