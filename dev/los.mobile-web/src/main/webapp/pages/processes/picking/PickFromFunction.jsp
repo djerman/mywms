@@ -97,7 +97,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 	                				 styleClass="commandButton2"
 	                				 disabled="#{PickingBean.completePick}"  />
 							</td>
-							<td style="padding-bottom:20px;">
+							<td style="padding-bottom:5px;">
 							</td>	                	
 	                	</tr>
 	                	<tr >
@@ -108,7 +108,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 	                				 styleClass="commandButton2"
 	                				 disabled="#{!PickingBean.showCancel}"  />
 							</td>
-							<td style="padding-bottom:20px;">
+							<td style="padding-bottom:5px;">
 							</td>	                	
 	                	</tr>
                 	</table>

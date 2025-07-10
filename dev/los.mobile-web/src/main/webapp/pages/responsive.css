@@ -39,8 +39,9 @@ input, button {
   /* Padding */
   --padding-small: 0.2em;
   --padding-medium: 0.4em;
-  --padding-button: 0.4em;
-  --padding-button-bar: 0.2em;
+  --padding-button-top-bottom: 0.4em;
+  --padding-button-left-right: 0.8em;
+  --padding-button-bar: 0.1em;
 
   /* Widths */
   --button-width-default: 6em;/*144px;*/
@@ -57,7 +58,7 @@ input, button {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		font-size: 1.2em;
+		font-size: var(--font-size-header);
 		margin-bottom: 0.8em;
 		flex-wrap: wrap;
 	}
@@ -72,38 +73,63 @@ input, button {
 	}
 	
 	body {
-		font-size: 1.2em;
+		font-size: var(--font-size-base);
 	}
 	
-	.navigateButton {
+	/*.navigateButton {
 	    font-size: var(--font-size-button);
-	    padding: var(--padding-button);
+	    padding: var(--padding-button-top-bottom);
+	    margin-right: var(--padding-button-bar);
 	    width: var(--button-width-narrow);
-	}
+	}*/
 	
 	input {
-		font-size: 1.2em;
+		font-size: var(--font-size-base);
 		padding: 0.4em;
 		box-sizing: border-box;
 	}
 	
-	/* Specially for BUTTON_LOGOUT and backButton – fix wdth */
+	.commandButton, .commandButton2, .navigateButton, .lowCommandButton {
+	    font-size: var(--font-size-button);
+	    padding: var(--padding-button-top-bottom) var(--padding-button-left-right);
+	    /*padding: var(--padding-button);*/
+	    box-sizing: border-box;
+	    border: none;
+        display: inline-block;
+        width: auto;
+        white-space: normal;
+        word-break: break-word;
+        margin-right: var(--padding-button-bar);
+        margin-top: var(--padding-button-bar);
+        margin-bottom: var(--padding-button-bar);
+        text-align: center;
+        cursor: pointer;
+        
+        /* Thin gray border around the button */
+        border: 1.5px solid #888;
+        /* Light outer shadow for subtle 3D effect */
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        /* Slightly rounded corners */
+        border-radius: 4px;
+    }
+    
+    .commandButton:active,
+    .commandButton2:active {
+        /* Deeper inner shadow when pressed */
+        box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.4);
+    }
+    
+	/* Specially for BUTTON_LOGOUT and backButton – fix wdth 
 	.commandButton[id*="BUTTON_LOGOUT"],
     .commandButton[id*="backButton"] {
 	    width: var(--button-width-default) !important;
 	    display: inline-block;
 	    white-space: nowrap;
-    }
+    }*/
 
-    .commandButton {
-	    font-size: var(--font-size-button);
-	    padding: var(--padding-button);
-	    box-sizing: border-box;
-	    margin-right: var(--padding-button-bar);
-	    margin-top: var(--padding-button-bar);
-    }
+
 	
-	/* Сви остали .commandButton дугмићи (сем logout) – 100% ширина, више редова ако треба */
+	/* Сви остали .commandButton дугмићи (сем logout) – 100% ширина, више редова ако треба 
 	.commandButton:not([id*="BUTTON_LOGOUT"]):not([id*="forwardButton"]):not([id*="backButton"]) {
 		display: block;
 		width: 100%;
@@ -111,21 +137,21 @@ input, button {
 		white-space: normal;
 		word-break: break-word;
 		text-align: center;
-	}
+	}*/
 
 	/* Fix width for forward button */
-	.commandButton[id*="forwardButton"]{
+	/*.commandButton[id*="forwardButton"]{*/
 		/*width: 144px !important;*/
-		min-width: 6em;
-		max-width: 100%;
+		/*min-width: 6em;
+		max-width: 100%;*/
 		/*width: auto;*/
-		display: inline-block;
-		white-space: nowrap;
+		/*display: inline-block;
+		white-space: nowrap;*/
 	}
 	
-	.buttonbar {
-		/*padding: 10px !important;*/
-	}
+	/*.buttonbar {
+		padding: 10px !important;
+	}*/
 	
     /* Applies to every <select> element whose ID ends with 'orderComboBox' or 'ultComboBox', regardless of prefix */
     select[id$="orderComboBox"],

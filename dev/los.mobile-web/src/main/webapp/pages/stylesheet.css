@@ -86,10 +86,10 @@ body{
 }
 
 
-.commandButton		{background-color: #f8b300; padding-top:10px; padding-bottom:10px; width:96px;}
-.lowCommandButton	{background-color: #f8b300; padding-top:10px; padding-bottom:10px; width:96px; height:20px;}
-.navigateButton  	{background-color: #f8b300; padding-top:10px; padding-bottom:10px; width:48px;}
-.commandButton2		{background-color: #f8b300; padding-top:5px; padding-bottom:5px; width:96px;}
+.commandButton		{background-color: #f8b300; /*padding-top:10px; padding-bottom:10px; width:96px;*/}
+.lowCommandButton	{background-color: #f8b300; /*padding-top:10px; padding-bottom:10px; width:96px; height:20px;*/}
+.navigateButton  	{background-color: #f8b300; /*padding-top:10px; padding-bottom:10px; width:48px;*/}
+.commandButton2		{background-color: #f8b300; /*padding-top:5px; padding-bottom:5px; width:96px;*/}
 
 
 
