@@ -222,6 +222,7 @@
                 <package>de.linogistix.common.gui.object</package>
                 <package>de.linogistix.common.gui.wizard.component</package>
                 <package>de.linogistix.common.gui.wizard.gui_builder</package>
+                <package>de.linogistix.common.log</package>
                 <package>de.linogistix.common.preferences</package>
                 <package>de.linogistix.common.res</package>
                 <package>de.linogistix.common.res.icon</package>
