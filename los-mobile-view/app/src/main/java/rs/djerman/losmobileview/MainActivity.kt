@@ -71,6 +71,8 @@ class MainActivity : AppCompatActivity() {
         // Configure WebView
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
+        webView.settings.loadWithOverviewMode = true
+        webView.settings.useWideViewPort = true
 
         // Use modern Chrome-style user agent to avoid server rejection
         webView.settings.userAgentString =

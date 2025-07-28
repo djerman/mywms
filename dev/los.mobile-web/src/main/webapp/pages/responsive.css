@@ -53,7 +53,7 @@ input, button {
   --color-text: #000000;
 }
 
-@media screen and (min-width: 360px) {
+@media screen and (min-width: 280px) {
 	.pageheader {
 		display: flex;
 		justify-content: space-between;
