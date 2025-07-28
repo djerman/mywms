@@ -16,7 +16,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <html>    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>LOS</title>
     <jsp:useBean id="JSPLogoutBeanID" scope="request" class="de.linogistix.mobile.common.gui.jsp.JSPLogoutBean" />
         <%--    <link rel="stylesheet" type="text/css" href="pages/picking/stylesheet.css" />--%>

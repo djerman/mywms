@@ -73,6 +73,7 @@ class MainActivity : AppCompatActivity() {
         webView.settings.domStorageEnabled = true
         webView.settings.loadWithOverviewMode = true
         webView.settings.useWideViewPort = true
+        webView.settings.textZoom = 100
 
         // Use modern Chrome-style user agent to avoid server rejection
         webView.settings.userAgentString =

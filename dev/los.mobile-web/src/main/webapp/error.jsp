@@ -6,7 +6,7 @@
  <!--<meta http-equiv="Refresh" content="1; URL=/los-mobile/faces/pages/processes/controller/gui/component/CenterPanel.jsp"> -->
         <meta http-equiv="Pragma" content="no-cache">
         <meta http-equiv="expires" content="Mon, 01 Jan 1990 00:00:01 GMT">            
-   		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 </head>
 
