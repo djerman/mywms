@@ -9,6 +9,15 @@
         <item name="colorSecondary">@color/colorAccent</item>
         <item name="android:windowBackground">@color/backgroundGray</item>
         <item name="android:textColorPrimary">@color/textBlack</item>
+
+        <!-- EDGE-TO-EDGE: додато -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <!-- <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item> -->
+        <!-- (опционо) ако желиш да избегнеш принудни контраст:
+             <item name="android:enforceStatusBarContrast">false</item>
+             <item name="android:enforceNavigationBarContrast">false</item>
+        -->
     </style>
 
     <style name="Theme.LosMobileView" parent="Base.Theme.LosMobileView" />
