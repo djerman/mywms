@@ -83,7 +83,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                                         <th scope="col">
                                         	<h:inputText id="lotTextField" 
                                         				 value="#{GoodsReceiptBean.unitLoadLabel_Input}" 
-                                        				 styleClass="input" />
+                                        				 styleClass="input"
+                                        				 onfocus="this.__losMobileScanTarget='raw'; window.__losMobileScanTarget='raw';" />
                                         </th>
                                     </tr>
                             	</table>
@@ -182,11 +183,15 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             }    
             
             function setFocus() {
-                document.getElementById('Form:lotTextField').focus();
+                var field = document.getElementById('Form:lotTextField');
+                if (field) {
+                    field.__losMobileScanTarget = 'raw';
+                    window.__losMobileScanTarget = 'raw';
+                    field.focus();
+                }
             }    
             
         </script>
         
     </body>
 </html>
-

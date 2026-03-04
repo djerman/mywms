@@ -13,10 +13,21 @@
     <string name="ip_or_domain_hint">IP address or domain</string>
     <string name="port_hint">Port (e.g. 8080)</string>
     <string name="save_and_test">Save and test</string>
+    <string name="test_connection">Test connection</string>
+    <string name="testing_connection">Testing...</string>
+    <string name="connection_test_success_with_status">Server is reachable (HTTP %1$d)</string>
+    <string name="connection_test_failed_with_reason">Connection test failed: %1$s</string>
+    <string name="connection_test_failed_generic">Connection test failed</string>
     <string name="invalid_port">Invalid port number (1–65535)</string>
 
     <string name="no_internet">Internet connection is not available</string>
     <string name="connection_error">Unable to connect to the server</string>
+    <string name="connection_timeout">Connection timed out while loading the server</string>
+    <string name="connection_error_ssl">Secure connection failed (SSL certificate error)</string>
+    <string name="connection_error_host_lookup">Server address could not be resolved</string>
+    <string name="connection_error_connect">Unable to reach the server</string>
+    <string name="connection_error_http_status">Server returned HTTP error %1$d</string>
+    <string name="loading">Loading...</string>
 
     <string name="try_again">Try Again</string>
 
@@ -30,4 +41,3 @@
     <string name="scan_failed">Barcode scan failed</string>
 
 </resources>
-

@@ -93,7 +93,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                                	<h:inputText id="articelTextField" 
                                				 value="#{StockTakingBean.currentItem}" 
                                				 styleClass="input" 
-                               				 disabled="#{StockTakingBean.expectedStock}"/>
+                               				 disabled="#{StockTakingBean.expectedStock}"
+                               				 onfocus="this.__losMobileScanTarget='item'; window.__losMobileScanTarget='item';"/>
                             </td>
                         </tr>
                         
@@ -122,12 +123,16 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             }    
             
             function setFocus() {
-                document.getElementById('Form:articelTextField').focus();
-                document.getElementById('Form:articelTextField').select();
+                var field = document.getElementById('Form:articelTextField');
+                if (field) {
+                    field.__losMobileScanTarget = 'item';
+                    window.__losMobileScanTarget = 'item';
+                    field.focus();
+                    field.select();
+                }
             }    
             
         </script>
         
     </body>
 </html>
-

@@ -94,7 +94,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                                         <th scope="col">
                                         	<h:inputText id="lotTextField" 
                                         				 value="#{GoodsReceiptBean.lotName_Input}" 
-                                        				 styleClass="input" />
+                                        				 styleClass="input"
+                                        				 onfocus="this.__losMobileScanTarget='lot'; window.__losMobileScanTarget='lot';" />
                                         </th>
                                     </tr>
                             	</table>
@@ -114,7 +115,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                                         <th scope="col">
                                         	<h:inputText id="validToTextField" 
                                         				 value="#{GoodsReceiptBean.validTo_Input}" 
-                                        				 styleClass="input" />
+                                        				 styleClass="input"
+                                        				 onfocus="this.__losMobileScanTarget='expiry'; window.__losMobileScanTarget='expiry';" />
                                        	</th>
                                     </tr>
                             	</table>
@@ -145,6 +147,10 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             
             function setFocus() {
                 var s = document.getElementById('Form:adviceComboBox');
+                if (s) {
+                  s.__losMobileScanTarget = 'raw';
+                }
+                window.__losMobileScanTarget = 'raw';
                 //var s = document.querySelector('.custom-select');
                 if(s){
                   s.focus();

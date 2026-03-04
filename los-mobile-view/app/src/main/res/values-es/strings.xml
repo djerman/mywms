@@ -13,10 +13,21 @@
     <string name="ip_or_domain_hint">Dirección IP o dominio</string>
     <string name="port_hint">Puerto (ej. 8080)</string>
     <string name="save_and_test">Guardar y probar</string>
+    <string name="test_connection">Probar conexión</string>
+    <string name="testing_connection">Probando conexión...</string>
+    <string name="connection_test_success_with_status">El servidor es accesible (HTTP %1$d)</string>
+    <string name="connection_test_failed_with_reason">La prueba de conexión falló: %1$s</string>
+    <string name="connection_test_failed_generic">La prueba de conexión falló</string>
     <string name="invalid_port">Número de puerto no válido (1–65535)</string>
 
     <string name="no_internet">No hay conexión a Internet</string>
     <string name="connection_error">No se puede conectar con el servidor</string>
+    <string name="connection_timeout">Tiempo de espera agotado al cargar el servidor</string>
+    <string name="connection_error_ssl">Falló la conexión segura (certificado SSL)</string>
+    <string name="connection_error_host_lookup">No se pudo resolver la dirección del servidor</string>
+    <string name="connection_error_connect">No se puede alcanzar el servidor</string>
+    <string name="connection_error_http_status">El servidor devolvió error HTTP %1$d</string>
+    <string name="loading">Cargando...</string>
 
     <string name="try_again">Intentar otra vez</string>
 

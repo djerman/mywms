@@ -12,8 +12,8 @@ android {
         minSdk = 21
         targetSdk = 35
 
-        versionCode = 8
-        versionName = "2.2"
+        versionCode = 9
+        versionName = "2.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -26,7 +26,13 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            // Enable shrinking/obfuscation so Play Console can use mapping.txt
+            isMinifyEnabled = true
+            isShrinkResources = true
+            // Generate native debug symbols archive for Play Console (ANR/crash symbolication)
+            ndk {
+                debugSymbolLevel = "SYMBOL_TABLE"
+            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -61,4 +67,21 @@ dependencies {
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.extensions)
+}
+
+val packageReleaseNativeDebugSymbols by tasks.registering(org.gradle.api.tasks.bundling.Zip::class) {
+    group = "build"
+    description = "Packages release native debug symbols for Play Console upload"
+    dependsOn("mergeReleaseNativeLibs")
+
+    from(layout.buildDirectory.dir("intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib")) {
+        include("arm64-v8a/*.so", "armeabi-v7a/*.so")
+    }
+
+    destinationDirectory.set(layout.buildDirectory.dir("outputs/native-debug-symbols/release"))
+    archiveFileName.set("native-debug-symbols.zip")
+}
+
+afterEvaluate {
+    tasks.findByName("bundleRelease")?.finalizedBy(packageReleaseNativeDebugSymbols)
 }

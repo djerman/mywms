@@ -104,7 +104,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                             <td>
                                	<h:inputText id="input1" 
                              			 value="#{GRDirectBean.inputLotName}" 
-                             			 styleClass="input" /> 
+                             			 styleClass="input"
+                             			 onfocus="this.__losMobileScanTarget='lot'; window.__losMobileScanTarget='lot';" /> 
                             </td>
                         </tr>
 
@@ -135,8 +136,13 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             }    
             
             function setFocus() {
-                document.getElementById('Form:input1').focus();
-                document.getElementById('Form:input1').select();
+                var field = document.getElementById('Form:input1');
+                if (field) {
+                    field.__losMobileScanTarget = 'lot';
+                    window.__losMobileScanTarget = 'lot';
+                    field.focus();
+                    field.select();
+                }
             }    
             
         </script>

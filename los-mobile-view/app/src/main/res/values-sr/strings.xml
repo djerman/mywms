@@ -13,12 +13,23 @@
     <string name="ip_or_domain_hint">IP адреса или домен</string>
     <string name="port_hint">Порт (нпр. 8080)</string>
     <string name="save_and_test">Сачувај и тестирај</string>
+    <string name="test_connection">Тестирај везу</string>
+    <string name="testing_connection">Тестирање...</string>
+    <string name="connection_test_success_with_status">Сервер је доступан (HTTP %1$d)</string>
+    <string name="connection_test_failed_with_reason">Тест везе није успео: %1$s</string>
+    <string name="connection_test_failed_generic">Тест везе није успео</string>
     <string name="invalid_port">Неисправан број порта (1–65535)</string>
 
     <string name="no_internet">Интернет веза није доступна</string>
     <string name="connection_error">Није могуће повезивање са сервером</string>
+    <string name="connection_timeout">Време за повезивање са сервером је истекло</string>
+    <string name="connection_error_ssl">Безбедна веза није успела (SSL сертификат)</string>
+    <string name="connection_error_host_lookup">Адреса сервера није пронађена</string>
+    <string name="connection_error_connect">Сервер није доступан</string>
+    <string name="connection_error_http_status">Сервер је вратио HTTP грешку %1$d</string>
+    <string name="loading">Учитавање...</string>
 
-    <string name="try_again">Pokušaj ponovo</string>
+    <string name="try_again">Покушај поново</string>
 
     <string name="select_scanner_app_title">Изаберите апликацију за скенирање</string>
     <string name="selected_scanner_app">Изабрано: %1$s</string>

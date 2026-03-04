@@ -201,7 +201,10 @@ class BarcodeScannerActivity : AppCompatActivity() {
                                     mappedBox.centerY().toInt()
                                 )
                             ) {
-                                setResult(RESULT_OK, intent.putExtra("SCAN_RESULT", barcode.rawValue))
+                                val resultIntent = intent
+                                    .putExtra("SCAN_RESULT", barcode.rawValue)
+                                    .putExtra("SCAN_FORMAT", barcode.format)
+                                setResult(RESULT_OK, resultIntent)
                                 finish()
                                 break
                             }

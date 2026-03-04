@@ -13,10 +13,21 @@
     <string name="ip_or_domain_hint">IP-Adresse oder Domain</string>
     <string name="port_hint">Port (z. B. 8080)</string>
     <string name="save_and_test">Speichern und testen</string>
+    <string name="test_connection">Verbindung testen</string>
+    <string name="testing_connection">Verbindung wird getestet...</string>
+    <string name="connection_test_success_with_status">Server ist erreichbar (HTTP %1$d)</string>
+    <string name="connection_test_failed_with_reason">Verbindungstest fehlgeschlagen: %1$s</string>
+    <string name="connection_test_failed_generic">Verbindungstest fehlgeschlagen</string>
     <string name="invalid_port">Ungültige Portnummer (1–65535)</string>
 
     <string name="no_internet">Internetverbindung ist nicht verfügbar</string>
     <string name="connection_error">Verbindung zum Server fehlgeschlagen</string>
+    <string name="connection_timeout">Zeitüberschreitung beim Laden des Servers</string>
+    <string name="connection_error_ssl">Sichere Verbindung fehlgeschlagen (SSL-Zertifikat)</string>
+    <string name="connection_error_host_lookup">Serveradresse konnte nicht aufgelöst werden</string>
+    <string name="connection_error_connect">Server ist nicht erreichbar</string>
+    <string name="connection_error_http_status">Server antwortete mit HTTP-Fehler %1$d</string>
+    <string name="loading">Wird geladen...</string>
 
     <string name="try_again">Versuchen Sie es erneut</string>
 
@@ -30,4 +41,3 @@
     <string name="scan_failed">Barcode-Scan fehlgeschlagen</string>
 
 </resources>
-

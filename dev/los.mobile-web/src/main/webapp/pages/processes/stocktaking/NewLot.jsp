@@ -99,7 +99,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                                	<h:inputText id="chargeTextField" 
                              			 value="#{StockTakingBean.currentLot}" 
                              			 styleClass="input" 
-                              			 disabled="#{StockTakingBean.expectedStock}" /> 
+                              			 disabled="#{StockTakingBean.expectedStock}"
+                              			 onfocus="this.__losMobileScanTarget='lot'; window.__losMobileScanTarget='lot';" /> 
                             </td>
                         </tr>
 
@@ -129,12 +130,16 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             }    
             
             function setFocus() {
-                document.getElementById('Form:chargeTextField').focus();
-                document.getElementById('Form:chargeTextField').select();
+                var field = document.getElementById('Form:chargeTextField');
+                if (field) {
+                    field.__losMobileScanTarget = 'lot';
+                    window.__losMobileScanTarget = 'lot';
+                    field.focus();
+                    field.select();
+                }
             }    
             
         </script>
         
     </body>
 </html>
-

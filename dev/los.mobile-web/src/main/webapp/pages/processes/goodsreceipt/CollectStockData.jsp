@@ -86,7 +86,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                                         	<h:inputText id="lotTextField" 
                                         				 value="#{GoodsReceiptBean.currentLot}" 
                                         				 styleClass="input" 
-                                        				 disabled="#{GoodsReceiptBean.lotPreset}" />
+                                        				 disabled="#{GoodsReceiptBean.lotPreset}"
+                                        				 onfocus="this.__losMobileScanTarget='lot'; window.__losMobileScanTarget='lot';" />
                                         </th>
                                     </tr>
                             	</table>
@@ -106,7 +107,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                                         <th scope="col">
                                         	<h:inputText id="validToTextField" 
                                         				 value="#{GoodsReceiptBean.validTo_Input}" 
-                                        				 styleClass="input" />
+                                        				 styleClass="input"
+                                        				 onfocus="this.__losMobileScanTarget='expiry'; window.__losMobileScanTarget='expiry';" />
                                        	</th>
                                     </tr>
                             	</table>
@@ -156,11 +158,15 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             }    
             
             function setFocus() {
-                document.getElementById('Form:lotTextField').focus();
+                var field = document.getElementById('Form:lotTextField');
+                if (field) {
+                    field.__losMobileScanTarget = 'lot';
+                    window.__losMobileScanTarget = 'lot';
+                    field.focus();
+                }
             }    
             
         </script>
         
     </body>
 </html>
-

@@ -13,10 +13,21 @@
     <string name="ip_or_domain_hint">IP-адрес или домен</string>
     <string name="port_hint">Порт (например: 8080)</string>
     <string name="save_and_test">Сохранить и проверить</string>
+    <string name="test_connection">Проверить соединение</string>
+    <string name="testing_connection">Проверка соединения...</string>
+    <string name="connection_test_success_with_status">Сервер доступен (HTTP %1$d)</string>
+    <string name="connection_test_failed_with_reason">Проверка соединения не удалась: %1$s</string>
+    <string name="connection_test_failed_generic">Проверка соединения не удалась</string>
     <string name="invalid_port">Неверный номер порта (1–65535)</string>
 
     <string name="no_internet">Интернет-соединение недоступно</string>
     <string name="connection_error">Не удалось подключиться к серверу</string>
+    <string name="connection_timeout">Истекло время ожидания при загрузке сервера</string>
+    <string name="connection_error_ssl">Не удалось установить защищенное соединение (SSL-сертификат)</string>
+    <string name="connection_error_host_lookup">Не удалось определить адрес сервера</string>
+    <string name="connection_error_connect">Сервер недоступен</string>
+    <string name="connection_error_http_status">Сервер вернул HTTP-ошибку %1$d</string>
+    <string name="loading">Загрузка...</string>
 
     <string name="try_again">Попробуйте еще раз</string>
 
@@ -30,4 +41,3 @@
     <string name="scan_failed">Сканирование штрихкода не удалось</string>
 
 </resources>
-

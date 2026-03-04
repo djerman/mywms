@@ -24,6 +24,27 @@ It provides mobile access to the **los-mobile** warehouse management system (bas
 
 4. On first launch, open the settings and enter your WMS server URL
 
+## 🚀 Google Play Release Artifacts
+
+For release uploads to Google Play (existing app updates), generate a signed **Android App Bundle (.aab)**.
+
+After release build, use these additional files in Play Console:
+
+- **Deobfuscation file (R8/ProGuard)**  
+  `app/build/outputs/mapping/release/mapping.txt`
+- **Native debug symbols**  
+  `app/build/outputs/native-debug-symbols/release/native-debug-symbols.zip`
+
+These files improve crash and ANR diagnostics in Play Console.
+
+Release build command:
+
+`./gradlew :app:bundleRelease`
+
+The build also creates:
+
+- `app/build/outputs/native-debug-symbols/release/native-debug-symbols.zip`
+
 ## 🌐 Localization
 
 The app supports the following languages:

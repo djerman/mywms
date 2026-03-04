@@ -17,6 +17,32 @@
         android:layout_weight="1"
         android:visibility="visible" />
 
+    <LinearLayout
+        android:id="@+id/loadingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/loadingSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+
+        <TextView
+            android:id="@+id/loadingText"
+            style="@style/LosMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/loading"
+            android:padding="8dp" />
+    </LinearLayout>
+
     <!-- Layout za prikaz greške -->
     <LinearLayout
         android:id="@+id/errorLayout"
