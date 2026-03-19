@@ -24,9 +24,7 @@
     <f:view locale="#{PickingBean.locale}" >
         <f:loadBundle var="bundle" basename ="de.linogistix.mobile.processes.picking.PickingMobileBundle" /> 
         
-        <!-- remove load immediately on page load from body
-             onLoad="document.getElementById('form:start').click();" -->
-        <body >
+        <body onLoad="document.getElementById('form:start').click();" >
 			<h:form id="form"> 
                	<h:commandButton id="start" 
 	                			value="#{bundle.ButtonStart}" 
