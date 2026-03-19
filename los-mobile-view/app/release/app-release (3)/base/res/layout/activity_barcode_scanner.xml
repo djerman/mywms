@@ -1,0 +1,17 @@
+
+Ş
+;
+android*http://schemas.android.com/apk/res/android*FrameLayout"`
+*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
+*http://schemas.android.com/apk/res/androidlayout_heightmatch_parent"(õ„2:0ÿÿÿÿÿÿÿÿÿ"q
+*http://schemas.android.com/apk/res/androidid@+id/previewContainer"(Ğ„2
+ü‚ øid/previewContainer0*Ù
+Ğ androidx.camera.view.PreviewView"`
+*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"
+(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
+*http://schemas.android.com/apk/res/androidlayout_heightmatch_parent"
+(õ„2:0ÿÿÿÿÿÿÿÿÿ"g
+*http://schemas.android.com/apk/res/androidid@+id/previewView"
+(Ğ„2
+ı‚ øid/previewView0
+0*
