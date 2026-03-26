@@ -24,7 +24,7 @@
     <f:view locale="#{PickingBean.locale}" >
         <f:loadBundle var="bundle" basename ="de.linogistix.mobile.processes.picking.PickingMobileBundle" /> 
         
-        <body onLoad="document.getElementById('form:start').click();" >
+        <body>
 			<h:form id="form"> 
                	<h:commandButton id="start" 
 	                			value="#{bundle.ButtonStart}" 
