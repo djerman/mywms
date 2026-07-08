@@ -29,6 +29,7 @@ import de.linogistix.los.common.businessservice.LOSPrintService;
 import de.linogistix.los.common.exception.UnAuthorizedException;
 import de.linogistix.los.common.service.QueryClientService;
 import de.linogistix.los.inventory.businessservice.LOSGoodsReceiptComponent;
+import de.linogistix.los.inventory.businessservice.GoodsReceiptAutoTransportServiceBean;
 import de.linogistix.los.inventory.crud.StockUnitCRUDRemote;
 import de.linogistix.los.inventory.exception.InventoryException;
 import de.linogistix.los.inventory.exception.InventoryExceptionKey;
@@ -100,6 +101,8 @@ public class LOSGoodsReceiptFacadeBean implements LOSGoodsReceiptFacade {
 	private StockUnitEntityService stockUnitEntityService;
 	@Inject
 	private GoodsReceiptBusiness goodsReceiptBusiness;
+	@EJB
+	private GoodsReceiptAutoTransportServiceBean autoTransportService;
 	@Inject
 	private ItemDataEntityService itemDataEntityService;
 	@Inject
@@ -253,6 +256,8 @@ public class LOSGoodsReceiptFacadeBean implements LOSGoodsReceiptFacade {
 				throw e;
 			}
 		}
+
+		autoTransportService.createTransportOrderIfConfigured(unitLoad);
 
 		if (printLabel && !StringUtils.isBlank(printer)) {
 			Document label = suLabelReport.generateReport(unitLoad);

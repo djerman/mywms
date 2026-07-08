@@ -66,6 +66,9 @@ public class InventoryBasicDataServiceBean implements InventoryBasicDataService 
 		propertyService.createSystemProperty(sys, null, LOSInventoryPropertyKey.GOODS_RECEIPT_PRINTER, null,
 				LOSCommonPropertyKey.PROPERTY_GROUP_CLIENT, resolve("PropertyDescGOODS_RECEIPT_PRINTER", locale),
 				false);
+		propertyService.createSystemProperty(sys, null, LOSInventoryPropertyKey.TRANSPORT_ORDER_DESTINATION, null,
+				LOSCommonPropertyKey.PROPERTY_GROUP_CLIENT, resolve("PropertyDescTRANSPORT_ORDER_DESTINATION", locale),
+				false);
 
 		List<StorageLocation> goodsInLocations = locationService.getForGoodsIn(null);
 		if (goodsInLocations.size() == 1 && StringUtils.isBlank(goodsInLocationProperty.getPropertyValue())) {
