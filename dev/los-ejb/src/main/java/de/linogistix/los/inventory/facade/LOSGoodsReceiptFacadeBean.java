@@ -257,7 +257,9 @@ public class LOSGoodsReceiptFacadeBean implements LOSGoodsReceiptFacade {
 			}
 		}
 
-		autoTransportService.createTransportOrderIfConfigured(unitLoad);
+		if (targetLocation == null && targetUnitLoad == null) {
+			autoTransportService.createTransportOrderIfConfigured(unitLoad);
+		}
 
 		if (printLabel && !StringUtils.isBlank(printer)) {
 			Document label = suLabelReport.generateReport(unitLoad);
