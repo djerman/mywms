@@ -71,6 +71,8 @@ public class BOStockUnitMasterNode extends BOMasterNode {
             sheet.put(unitLoad);
             BOMasterNodeProperty<String> storageLocation = new BOMasterNodeProperty<String>("storageLocation", String.class, to.storageLocation, CommonBundleResolver.class);
             sheet.put(storageLocation);
+            BOMasterNodeProperty<String> zone = new BOMasterNodeProperty<String>("zone", String.class, to.zone, CommonBundleResolver.class);
+            sheet.put(zone);
             BOMasterNodeProperty<BigDecimal> amount = new BOMasterNodeProperty<BigDecimal>("amount", BigDecimal.class, to.amount, CommonBundleResolver.class);
             sheet.put(amount);
             BOMasterNodeProperty<BigDecimal> reservedAmount = new BOMasterNodeProperty<BigDecimal>("reservedAmount", BigDecimal.class, to.reservedAmount, CommonBundleResolver.class);
@@ -87,12 +89,13 @@ public class BOStockUnitMasterNode extends BOMasterNode {
 
         BOMasterNodeProperty<String> unitLoad = new BOMasterNodeProperty<String>("unitLoad", String.class, "", CommonBundleResolver.class);
         BOMasterNodeProperty<String> storageLocation = new BOMasterNodeProperty<String>("storageLocation", String.class, "", CommonBundleResolver.class);
+        BOMasterNodeProperty<String> zone = new BOMasterNodeProperty<String>("zone", String.class, "", CommonBundleResolver.class);
         
         BOMasterNodeProperty<BigDecimal> amount = new BOMasterNodeProperty<BigDecimal>("amount", BigDecimal.class,  new BigDecimal(0), CommonBundleResolver.class);
         BOMasterNodeProperty<BigDecimal> reservedAmount = new BOMasterNodeProperty<BigDecimal>("reservedAmount", BigDecimal.class,  new BigDecimal(0), CommonBundleResolver.class);
 
         BOMasterNodeProperty[] props = new BOMasterNodeProperty[]{
-            itemData, itemDataName, lot, unitLoad, storageLocation, amount, reservedAmount
+            itemData, itemDataName, lot, unitLoad, storageLocation, zone, amount, reservedAmount
         };
 
         return props;
@@ -105,11 +108,12 @@ public class BOStockUnitMasterNode extends BOMasterNode {
 
         BOMasterNodeProperty<String> unitLoad = new BOMasterNodeProperty<String>("unitLoad", String.class, "", CommonBundleResolver.class);
         BOMasterNodeProperty<String> storageLocation = new BOMasterNodeProperty<String>("storageLocation", String.class, "", CommonBundleResolver.class);
+        BOMasterNodeProperty<String> zone = new BOMasterNodeProperty<String>("zone", String.class, "", CommonBundleResolver.class);
         BOMasterNodeProperty<Integer> amount = new BOMasterNodeProperty<Integer>("amount", Integer.class, 0, CommonBundleResolver.class);
         BOMasterNodeProperty<Integer> reservedAmount = new BOMasterNodeProperty<Integer>("reservedAmount", Integer.class, 0, CommonBundleResolver.class);
 
         BOMasterNodeProperty[] props = new BOMasterNodeProperty[]{
-            itemData, itemDataName, lot, unitLoad, storageLocation, amount, reservedAmount
+            itemData, itemDataName, lot, unitLoad, storageLocation, zone, amount, reservedAmount
         };
 
         return props;

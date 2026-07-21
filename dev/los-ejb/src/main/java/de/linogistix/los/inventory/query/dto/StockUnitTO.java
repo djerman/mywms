@@ -24,6 +24,7 @@ public class StockUnitTO  extends BODTO<StockUnit>{
 	public String itemData;
 	public String itemDataName;
 	public String storageLocation;
+	public String zone;
 	public BigDecimal amount;
 	public BigDecimal reservedAmount;
 	public int lock; 
@@ -32,6 +33,10 @@ public class StockUnitTO  extends BODTO<StockUnit>{
 	//dgrys portierung wildfly 8.2
 	public StockUnitTO(Long id, int version, int lock, String l, String itemData, String itemDataName, int ulVersion, String unitLoad, String storageLocation, BigDecimal amount, BigDecimal reservedAmount, int scale){
 		this(id, version, ""+id, lock, l, itemData, itemDataName, ulVersion, unitLoad, storageLocation, amount, reservedAmount, scale);
+	}
+
+	public StockUnitTO(Long id, int version, int lock, String l, String itemData, String itemDataName, int ulVersion, String unitLoad, String storageLocation, String zone, BigDecimal amount, BigDecimal reservedAmount, int scale){
+		this(id, version, ""+id, lock, l, itemData, itemDataName, ulVersion, unitLoad, storageLocation, zone, amount, reservedAmount, scale);
 	}
 	
 	/**
@@ -49,6 +54,10 @@ public class StockUnitTO  extends BODTO<StockUnit>{
 	 * @param scale
 	 */
 	public StockUnitTO(Long id, int version, String name, int lock, String l, String itemData, String itemDataName, int ulVersion, String unitLoad, String storageLocation, BigDecimal amount, BigDecimal reservedAmount, int scale){
+		this(id, version, name, lock, l, itemData, itemDataName, ulVersion, unitLoad, storageLocation, null, amount, reservedAmount, scale);
+	}
+
+	public StockUnitTO(Long id, int version, String name, int lock, String l, String itemData, String itemDataName, int ulVersion, String unitLoad, String storageLocation, String zone, BigDecimal amount, BigDecimal reservedAmount, int scale){
 		super(id, version+ulVersion, name);
 		
 		this.lot= l;
@@ -56,6 +65,7 @@ public class StockUnitTO  extends BODTO<StockUnit>{
 		this.itemData= itemData;
 		this.itemDataName= itemDataName;
 		this.storageLocation= storageLocation;
+		this.zone = zone;
 
 		try{
 			this.amount= amount.setScale(scale);
@@ -82,6 +92,7 @@ public class StockUnitTO  extends BODTO<StockUnit>{
 		this.itemData= itemData;
 		this.itemDataName= itemDataName;
 		this.storageLocation= "";
+		this.zone = null;
 		
 		try{
 			this.amount= amount.setScale(scale);
@@ -112,6 +123,7 @@ public class StockUnitTO  extends BODTO<StockUnit>{
 		int scale = su.getItemData().getScale();
 		this.unitLoad = su.getUnitLoad().getLabelId();
 		this.storageLocation= su.getUnitLoad().getStorageLocation().getName();
+		this.zone = su.getUnitLoad().getStorageLocation().getZone() == null ? null : su.getUnitLoad().getStorageLocation().getZone().getName();
 		BigDecimal amount = su.getAmount();
 		BigDecimal reservedAmount  =su.getReservedAmount();
 		
@@ -150,6 +162,7 @@ public class StockUnitTO  extends BODTO<StockUnit>{
 		this.itemData= itemData;
 		this.itemData= itemDataName;
 		this.storageLocation= "";
+		this.zone = null;
 		
 		try{
 			this.amount= amount.setScale(scale);
@@ -191,6 +204,14 @@ public class StockUnitTO  extends BODTO<StockUnit>{
 
 	public void setStorageLocation(String storageLocation) {
 		this.storageLocation = storageLocation;
+	}
+
+	public String getZone() {
+		return zone;
+	}
+
+	public void setZone(String zone) {
+		this.zone = zone;
 	}
 
 	public BigDecimal getAmount() {

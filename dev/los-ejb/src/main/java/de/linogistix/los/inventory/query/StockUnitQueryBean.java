@@ -88,13 +88,16 @@ public class StockUnitQueryBean extends BusinessObjectQueryBean<StockUnit>
 		sbQuery.append("su.itemData.name,");
 		sbQuery.append("ul.version,");
 		sbQuery.append("ul.labelId,");
-		sbQuery.append("ul.storageLocation.name,");
+		sbQuery.append("sl.name,");
+		sbQuery.append("zone.name,");
 		sbQuery.append("su.amount,");
 		sbQuery.append("su.reservedAmount,");
 		sbQuery.append("su.itemData.scale");		
 		sbQuery.append(") FROM ");			
 		sbQuery.append(StockUnit.class.getSimpleName()+" su ");
 		sbQuery.append(" JOIN su.unitLoad ul ");
+		sbQuery.append(" JOIN ul.storageLocation sl ");
+		sbQuery.append(" LEFT JOIN sl.zone zone ");
 		sbQuery.append("WHERE su.unitLoad = ul ");
 		
 		if(!getCallersUser().getClient().isSystemClient()){
@@ -322,17 +325,18 @@ public class StockUnitQueryBean extends BusinessObjectQueryBean<StockUnit>
 			sb.append("it.name,");
 			sb.append("ul.version,");
 			sb.append("ul.labelId,");
-			sb.append("ul.storageLocation.name,");
+			sb.append("sl.name,");
+			sb.append("zone.name,");
 			sb.append("su.amount,");
 			sb.append("su.reservedAmount,");
 			sb.append("it.scale");						
 			sb.append(") FROM ");			
-			sb.append(StockUnit.class.getName()+" su, ");
-			sb.append(UnitLoad.class.getSimpleName()+" ul, ");
-			sb.append(ItemData.class.getSimpleName()+" it ");
-			sb.append("WHERE su.unitLoad = ul AND ");
-			sb.append("su.itemData = it ");			
-			sb.append(" AND ul.storageLocation = :sloc ");
+			sb.append(StockUnit.class.getName()+" su ");
+			sb.append(" JOIN su.unitLoad ul ");
+			sb.append(" JOIN ul.storageLocation sl ");
+			sb.append(" LEFT JOIN sl.zone zone ");
+			sb.append(" JOIN su.itemData it ");
+			sb.append("WHERE sl = :sloc ");
 			
 			if(!getCallersUser().getClient().isSystemClient()){
 				sb.append("AND su.client =:cl ");
@@ -504,11 +508,12 @@ public class StockUnitQueryBean extends BusinessObjectQueryBean<StockUnit>
 		try{
 			
 			StringBuffer sb = new StringBuffer();
-			sb.append(" FROM " + StockUnit.class.getName()+" su,  ");
-			sb.append(UnitLoad.class.getSimpleName()+" ul, ");
-			sb.append(ItemData.class.getSimpleName()+" it ");
-			sb.append("WHERE su.unitLoad = ul AND ");
-			sb.append("su.itemData = it ");
+			sb.append(" FROM " + StockUnit.class.getName()+" su ");
+			sb.append(" JOIN su.unitLoad ul ");
+			sb.append(" JOIN ul.storageLocation sl ");
+			sb.append(" LEFT JOIN sl.zone zone ");
+			sb.append(" JOIN su.itemData it ");
+			sb.append("WHERE 1=1 ");
 			
 			if(!getCallersUser().getClient().isSystemClient()){
 				sb.append("AND su.client =:cl ");
@@ -518,7 +523,7 @@ public class StockUnitQueryBean extends BusinessObjectQueryBean<StockUnit>
 			sb.append("   AND su.lock!=" + BusinessObjectLockState.GOING_TO_DELETE.getLock());
 		
 			if( storageLocation != null ) {
-				sb.append(" AND ul.storageLocation.id="+storageLocation.getId());
+				sb.append(" AND sl.id="+storageLocation.getId());
 			}
 			if( itemData != null ) {
 				sb.append(" AND it.id="+itemData.getId());
@@ -555,7 +560,8 @@ public class StockUnitQueryBean extends BusinessObjectQueryBean<StockUnit>
 			sb.append("it.name,");
 			sb.append("ul.version,");
 			sb.append("ul.labelId,");
-			sb.append("ul.storageLocation.name,");
+			sb.append("sl.name,");
+			sb.append("zone.name,");
 			sb.append("su.amount,");
 			sb.append("su.reservedAmount,");
 			sb.append("it.scale )");
